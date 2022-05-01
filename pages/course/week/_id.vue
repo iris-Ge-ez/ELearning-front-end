@@ -493,7 +493,7 @@
   <div :class="['icon', expandchat ? 'expanded' :'']" @click="ToggleChat">
     <div class="user">
       
-      Adnan Khan
+    You 
     </div>
    <p v-if="expandchat"> Close</p>
 	<p v-else> <i class=" wmicon-social7"></i></p></div>
