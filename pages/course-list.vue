@@ -142,6 +142,8 @@
                             </div>
                             <div class="wm-courses wm-courses-popular wm-courses-mediumsec">
                                 <ul class="row">
+
+                            <nuxt-link to="/course/1">
                                     <li class="col-md-12">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/papular-courses-1.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
@@ -163,6 +165,8 @@
                                             </div>
                                         </div>
                                     </li>
+                                    </nuxt-link>
+                            <nuxt-link to="/course/1">
                                     <li class="col-md-12">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/papular-courses-2.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
@@ -184,6 +188,8 @@
                                             </div>
                                         </div>
                                     </li>
+                            </nuxt-link>
+                           <nuxt-link to="/course/1">
                                     <li class="col-md-12">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/papular-courses-3.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
@@ -205,6 +211,9 @@
                                             </div>
                                         </div>
                                     </li>
+                           </nuxt-link>
+
+                           <nuxt-link to="/course/1">
                                     <li class="col-md-12">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/papular-courses-5.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
@@ -226,6 +235,8 @@
                                             </div>
                                         </div>
                                     </li>
+                           </nuxt-link>
+                           <nuxt-link to="/course/1">
                                     <li class="col-md-12">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/papular-courses-6.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
@@ -247,6 +258,8 @@
                                             </div>
                                         </div>
                                     </li>
+                           </nuxt-link>
+                           <nuxt-link to="/course/1">
                                     <li class="col-md-12">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/papular-courses-7.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
@@ -268,6 +281,9 @@
                                             </div>
                                         </div>
                                     </li>
+
+                           </nuxt-link>
+                           <nuxt-link to="/course/1">
                                     <li class="col-md-12">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/papular-courses-8.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
@@ -289,6 +305,8 @@
                                             </div>
                                         </div>
                                     </li>
+                           </nuxt-link>
+                           <nuxt-link to="/course/1">
                                     <li class="col-md-12">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/papular-courses-9.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
@@ -310,6 +328,7 @@
                                             </div>
                                         </div>
                                     </li>
+                           </nuxt-link>
                                 </ul>
                             </div>
                             <div class="wm-pagination">

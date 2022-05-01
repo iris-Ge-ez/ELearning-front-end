@@ -384,6 +384,125 @@
 		</div>
 		<!--// Main Content \\-->
 
+		
+<!-- chat bot  -->
+
+<div id="chat-bot">
+  <div :class="['messenger br10', expandchat ? 'expanded': '' ] ">
+    <div class="timestamp">04:45 AM  <p  @click="ToggleUserView" v-if="view_users" style="background-color:#0c4d2f;color:#fff"> close</p> <p v-else  @click="ToggleUserView" style="background-color:#222845 !important;color:#fff"> view users</p></div>
+
+<div class="group">
+<div class="chatroom" v-if="view_users">
+      <!-- msgs  -->
+    <div class="msg msg-left">
+        <h5>Joined Students</h5>
+      </div>
+  
+      <div class="msg msg-left">
+        <div style="background-color:#355f4b;">
+<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#" class="wm-authorpost">Shelly </a>       </div>
+      </div>
+	  
+      <div class="msg msg-left">
+        <div style="background-color:#355f4b;">
+<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#" class="wm-authorpost">Tomas </a>       </div>
+      </div>
+	  
+      <div class="msg msg-left">
+        <div style="background-color:#355f4b;">
+<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#" class="wm-authorpost">Mike </a>       </div>
+      </div>
+	  
+      <div class="msg msg-left">
+        <div style="background-color:#355f4b;">
+<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#" class="wm-authorpost">Miraj </a>       </div>
+      </div>
+	  
+      <div class="msg msg-left">
+        <div style="background-color:#355f4b;">
+<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#" class="wm-authorpost">Yona </a>       </div>
+      </div>
+      <div class="msg msg-left">
+        <div style="background-color:#355f4b;">
+<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#" class="wm-authorpost">Esrael </a>       </div>
+      </div>
+
+      <!-- msgs  -->
+    </div>
+
+    <div class="chatroom">
+      <!-- msgs  -->
+      <div class="msg msg-left">
+        <div class="bubble">
+          <h6 class="name">AdDY's Bot</h6>
+          Hello, I am a smart chat bot, <br />
+          How can I help you.
+        </div>
+      </div>
+      <div class="msg msg-right">
+        <div class="bubble">
+          Oh! Look at you. You are awesome
+        </div>
+      </div>
+      <div class="msg msg-right">
+        <div class="bubble">
+          Can you please tell me who created you?
+        </div>
+      </div>
+      <div class="msg msg-left">
+        <div class="bubble">
+          Yes, Of course! Adnan Khan created me. <br />
+          He's behind my awesomeness. He did a great job. didn't he?
+        </div>
+      </div>
+      <div class="msg msg-right">
+        <div class="bubble">
+          Yeah! He did an amazing job.<br />
+          How can I contact him?
+        </div>
+      </div>
+      <div class="msg msg-left">
+        <div class="bubble">
+          Here's my boss' Fiverr Username. <br />
+          <a href="www.fiverr.com/adnanaddy" target="_blank">fiverr.com/adnanaddy</a>
+        </div>
+      </div>
+      <div class="msg msg-right">
+        <div class="bubble">
+          Thanks alot. See you next time. Good bye
+        </div>
+      </div>
+
+      <div class="msg msg-left">
+        <div class="bubble">
+          Good bye. Take care
+        </div>
+      </div>
+      <!-- msgs  -->
+    </div>
+
+</div>
+
+    <div class="type-area">
+      <input type="text" class="typing" placeholder="Type Here...">
+      <span class="send">
+        <i class="bi bi-arrow-return-left"></i>
+      </span>
+    </div>
+  </div>
+  <div :class="['icon', expandchat ? 'expanded' :'']" @click="ToggleChat">
+    <div class="user">
+      
+      Adnan Khan
+    </div>
+   <p v-if="expandchat"> Close</p>
+	<p v-else> <i class=" wmicon-social7"></i></p></div>
+
+</div>
+
+<!--   main body end  -->
+
+
   </div>
 
 </template>
@@ -392,7 +511,14 @@
 export default {
   layout:"MainLayout",
 
+data(){
 
+	return {
+
+		expandchat:false,
+		view_users:false
+	}
+},
   head(){
 
 	  return {
@@ -433,11 +559,152 @@ export default {
            
          ]
 	  }
+  },
+
+  methods:{
+
+	  ToggleChat(){
+		  this.expandchat = !this.expandchat
+	  },
+	  ToggleUserView(){
+		  this.view_users = !this.view_users
+	  }
   }
 
 }
 </script>
 
-<style>
+<style scoped>
+#chat-bot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99999999999999999;
+  height: auto;
+  float: right;
+}
+#chat-bot .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(135deg, rgb(15 81 50) 0%, rgb(9 73 44) 100%);
+  /* width: 50px; */
+  height: 50px;
+  float: right;
+  border-radius: 10px;
+  padding: 10px 15px;
+  transition: 0.3s all;
+  box-shadow: 0 30px 50px #0000000d;
+  overflow: hidden;
+}
+#chat-bot .icon:hover {
+  box-shadow: 0 5px 20px rgb(209 231 221);
+}
+#chat-bot .icon .user {
+  visibility: hidden;
+  margin-left: -100px;
+}
+#chat-bot .icon.expanded {
+  width: 370px;
+  justify-content: space-between;
+}
+#chat-bot .messenger.expanded {
+  visibility: visible;
+  height: 489px;
+  width: 370px;
+}
+#chat-bot .icon.expanded .user {
+  visibility: visible;
+  margin-left: 0;
+  transition: 0.5s;
+}
+.group{
+	display: flex;
+	justify-content: space-evenly;
+}
+#chat-bot .messenger {
+  background-color: #fff;
+  border: 1px solid #0f513238;
+  box-shadow: 0 30px 50px #0000000d;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  height: 390px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.7s;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+#chat-bot .chatroom {
+  height: 290px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  touch-action: pan-y;
+}
+#chat-bot .chatroom::-webkit-scrollbar {
+  display: none;
+}
+#chat-bot .type-area input.typing {
+  width: 100%;
+  outline: none !important;
+  border: 1px solid rgb(227 230 234);
+  border-radius: 5px;
+  padding: 8px 40px 8px 14px;
+  height: 40px;
+  font-size: 12px;
+}
+#chat-bot .type-area {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 12px rgb(0 0 0 / 3%);
+  margin-top: 10px;
+}
+#chat-bot .type-area span.send {
+  position: absolute;
+  right: 14px;
+  top: 9px;
+  cursor: pointer;
+  font-size: 18px;
+}
+#chat-bot .msg {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: #7c8089;
+}
+#chat-bot .msg .bubble {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #e0f2ff;
+}
+#chat-bot .msg.msg-right .bubble {
+  color: rgb(15 81 50);
+  background-color: rgb(209 231 221);
+}
+#chat-bot .msg .bubble .name {
+  color: #393d4a;
+  font-size: 12px;
+  font-weight: 500;
+}
+.msg.msg-left {
+  align-items: flex-start;
+}
+.msg.msg-right {
+  align-items: flex-end;
+}
+#chat-bot .timestamp {
+  font-size: 12px;
+  color: #7c8089;
+  text-align: center;
+  margin-bottom: 10px;
+}
+/* chat-bot	 end */
 
 </style>

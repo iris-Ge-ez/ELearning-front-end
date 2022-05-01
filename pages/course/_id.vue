@@ -238,6 +238,7 @@
             <!--// Main Section \\-->
 		</div>
 		<!--// Main Content \\-->
+		<!--   main  body-->
 
   </div>
 
@@ -293,6 +294,3 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
