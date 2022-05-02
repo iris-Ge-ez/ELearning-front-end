@@ -90,7 +90,7 @@
 								<div class="wm-blog-author wm-ourcourses">
 									<div class="wm-blogauthor-left">
 										<img src="../../../static/extra-images/our-courses-author.jpg" alt="">
-										<a class="wm-authorpost" href="#">Shelly T. Forrester</a>
+										<a class="wm-authorpost" href="#">Mr Teacher</a>
 									</div>
 									<div class="wm-our-courses">
 										<ul>
@@ -118,6 +118,7 @@
 								<div class="wm-ourcourses-right">
 									<a class="wm-previous-icon" href="#"><i class="fa fa-angle-left" ></i>previous Week</a>
 									<a class="wm-Next-icon" href="#">Next Week<i class="fa fa-angle-right" ></i></a>
+                  	<a class="wm-more-details" style="margin-left:10px;height:45px" href="#">Download Pdf</a>
 								</div>
 							</div>
 							<div class="wm-our-course-detail">
