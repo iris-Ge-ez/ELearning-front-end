@@ -151,8 +151,8 @@
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Advanced Architectural Research</a></h6>
-                                                <div class="wm-courses-price"> <span>$32</span> </div>
+                                                <h6><a href="#">Biology</a></h6>
+                                                <div class="wm-courses-price"> <span>new</span> </div>
                                                 <ul>
                                                     <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 342</a></li>
                                                     <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 10</a></li>
@@ -169,8 +169,8 @@
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Advanced Landscape & Urbanism</a></h6>
-                                                <div class="wm-courses-price"> <span>Free</span> </div>
+                                                <h6><a href="#">Civics & Ethical Education </a></h6>
+                                                <div class="wm-courses-price"> <span>1 week ago</span> </div>
                                                 <ul>
                                                     <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 438</a></li>
                                                     <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 28</a></li>
@@ -187,8 +187,8 @@
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Transdisciplinary Design</a></h6>
-                                                <div class="wm-courses-price"> <span>$79</span> </div>
+                                                <h6><a href="#">Mathematics</a></h6>
+                                                <div class="wm-courses-price"> <span>3 days ago</span> </div>
                                                 <ul>
                                                     <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 309</a></li>
                                                     <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 19</a></li>
@@ -205,8 +205,8 @@
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Financial Information Systems</a></h6>
-                                                <div class="wm-courses-price"> <span>$50</span> </div>
+                                                <h6><a href="#">Phisics</a></h6>
+                                                <div class="wm-courses-price"> <span>new</span> </div>
                                                 <ul>
                                                     <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 298</a></li>
                                                     <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 11</a></li>

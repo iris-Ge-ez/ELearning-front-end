@@ -233,12 +233,7 @@
                         <li> <input type="submit" value="Sign In"> </li>
                     </ul>
                 </form>
-                <span class="wm-color">or try our socials</span>
-                <ul class="wm-login-social-media">
-                    <li><a href="#"><i class="wmicon-social5"></i> Facebook</a></li>
-                    <li class="wm-twitter-color"><a href="#"><i class="wmicon-social4"></i> twitter</a></li>
-                    <li class="wm-googleplus-color"><a href="#"><i class="fa fa-google-plus-square"></i> Google+</a></li>
-                </ul>
+               
                 <p @click="ToggleLogin" >Not a member yet? <a  href="#">Sign-up Now! </a></p>
             </div>
 
@@ -253,12 +248,7 @@
                         <li> <input type="submit" value="Create Account"> </li>
                     </ul>
                 </form>
-                <span class="wm-color">or signup with your socials:</span>
-                <ul class="wm-login-social-media">
-                    <li><a href="#"><i class="wmicon-social5"></i> Facebook</a></li>
-                    <li class="wm-twitter-color"><a href="#"><i class="wmicon-social4"></i> twitter</a></li>
-                    <li class="wm-googleplus-color"><a href="#"><i class="fa fa-google-plus-square"></i> Google+</a></li>
-                </ul>
+               
                 <p>Already a member? <a @click="ToggleLogin" href="#">Sign-in Here!</a></p>
             </div>
 
