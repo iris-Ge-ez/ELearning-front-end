@@ -1,8 +1,8 @@
 <template>
   
-<div>
+<div class="wm-main-wrapper">
    <!--// Main Wrapper \\-->
-    <div class="wm-main-wrapper">
+   
         
     
 		<!--// Main Banner \\-->
@@ -377,7 +377,7 @@
             </div>
             <!--// Main Section \\-->
 
-		</div>
+	
 		<!--// Main Content \\-->
 
 	<div class="clearfix"></div>
