@@ -157,9 +157,9 @@
                         <aside class="widget widget_contact_info col-md-3">
                             <a href="index-2.html" class="wm-footer-logo"><img src="images/logo-1.png" alt=""></a>
                             <ul>
-                                <li><i class="wm-color wmicon-pin"></i> 195 Cooks Mine Road Espanola, NM 87532</li>
-                                <li><i class="wm-color wmicon-phone"></i> +1 505-753-5656 <br> +1 505-753-4437</li>
-                                <li><i class="wm-color wmicon-letter"></i> <a href="mailto:name@email.com">info@university.com</a> <a href="mailto:name@email.com">support@university.com</a></li>
+                                <li><i class="wm-color wmicon-pin"></i> Adama Science and Technology University</li>
+                                <li><i class="wm-color wmicon-phone"></i> +251 92141240124 <br></li>
+                                <li><i class="wm-color wmicon-letter"></i> <a href="#">info@Collague.com</a> <a href="#">support@Us.com</a></li>
                             </ul>
                             <div class="wm-footer-icons">
                                 <a href="#" class="wmicon-social5"></a>
@@ -181,18 +181,11 @@
                             </ul>
                         </aside>
                         <aside class="widget widget_twitter col-md-4">
-                            <div class="wm-footer-widget-title"> <h5><i class="wmicon-social2"></i> @enrollcampus</h5> </div>
+                            <div class="wm-footer-widget-title"> <h5><i class="wmicon-social2"></i> @enrollCourses</h5> </div>
                             <ul>
+                               
                                 <li>
-                                    <p>Check Youniverse - Multipurpose PSD Template @ThemeForest: <a href="#">pic.twitter.com/xcVlqJySjq</a></p>
-                                    <time datetime="2008-02-14 20:00" class="wm-color">2 hrs ago</time>
-                                </li>
-                                <li>
-                                    <p>Check out my New PSD:  FashionPlus - Fashion eCommerce: <a href="#">pic.twitter.com/xc445Ghyt</a></p>
-                                    <time datetime="2008-02-14 20:00" class="wm-color">4 hrs ago</time>
-                                </li>
-                                <li>
-                                    <p>MedicAid - Medical Template @ThemeForest: <a href="#">pic.twitter.com/xcVlq542wfER</a></p>
+                                    <p><a href="#">twitter</a></p>
                                     <time datetime="2008-02-14 20:00" class="wm-color">1 day ago</time>
                                 </li>
                             </ul>
@@ -207,8 +200,7 @@
             <div class="wm-copyright">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6"> <span><i class="wmicon-nature"></i> Barcelona, Spain 2°F / -17°C</span> </div>
-                        <div class="col-md-6"> <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p> </div>
+                        <div class="col-md-6"> <span><i class="wmicon-nature"></i> Ethiopia ,Adama 2°F / -17°C</span> </div>
                     </div>
                 </div>
             </div>
