@@ -17,7 +17,7 @@ export default {
     
 
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon-2.png' },
       { rel: "stylesheet", href: "css/bootstrap.css" },
       { rel: "stylesheet", href: "css/font-awesome.css" },
       { rel: "stylesheet", href: "css/flaticon.css" },
