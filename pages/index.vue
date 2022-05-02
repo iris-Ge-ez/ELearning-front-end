@@ -270,31 +270,8 @@
                 <div class="container">
                     <div class="row">
                         
-                        <div class="col-md-5">
-                            <div class="wm-history-list">
-                                <h2>Our History</h2>
-                                <ul>
-                                    <li>
-                                        <time datetime="2008-02-14 20:00">2016</time>
-                                        <span>Released the Arctic Collection the Perennial Collection of handknotted luxury area rugs.</span>
-                                    </li>
-                                    <li>
-                                        <time datetime="2008-02-14 20:00">2015</time>
-                                        <span>Installed our first custom floorcovering for a museum at the Aga Khan Museum in Toronto</span>
-                                    </li>
-                                    <li>
-                                        <time datetime="2008-02-14 20:00">2014</time>
-                                        <span>Designed our first wallcovering for all these healthcare sector at the Toronto Centre.</span>
-                                    </li>
-                                    <li>
-                                        <time datetime="2008-02-14 20:00">2013</time>
-                                        <span>Celebrated 25 years in business with “The Art Day Project” – a partnership.</span>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
+                        
+                        <div class="col-md-12">
                             <div class="wm-subscribe-form">
                                 <h2>Still not convinced? We can help you!</h2>
                                 <p>Fill out the form below and we will contact you.</p>
