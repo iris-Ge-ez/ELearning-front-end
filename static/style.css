@@ -3527,9 +3527,9 @@ ul li:last-child .wm-latest-news-wrap {
 .wm-apply-info ul li:nth-child(2) i         { color: #1e5571; }
 .wm-apply-info ul li:nth-child(2)           { background-color: #21546e; }
 .wm-apply-info ul li:nth-child(2) i         { color: #31637c; }
-.wm-apply-info-color ul li                  { background-color: #231f20; }
-.wm-apply-info-color ul li:nth-child(2)     { background-color: #231f20; }
-.wm-apply-info-color ul li:nth-child(3)     { background-color: #231f20; }
+.wm-apply-info-color ul li                  { background-color: #222845; }
+.wm-apply-info-color ul li:nth-child(2)     { background-color: #222845; }
+.wm-apply-info-color ul li:nth-child(3)     { background-color: #222845; }
 .wm-apply-info.wm-apply-info-color ul li i  { color: #f18314; }
 .wm-apply-info.wm-apply-info-color ul li p  { color: #ffffff; }
 .wm-apply-info-color .applyinfo-btn { border-radius: 0px; }
