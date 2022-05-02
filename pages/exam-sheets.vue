@@ -204,24 +204,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="col-md-4">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-5.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-4.jpg" alt="">
-                                                    <h6><a href="#">Julius M. Lepage</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Economics & Quality Management</a></h6>
-                                                <div class="wm-courses-price"> <span>$50</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 298</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 11</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
+                                  
                                     <li class="col-md-4">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/papular-courses-6.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
@@ -402,24 +385,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="col-md-4">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-16.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-6.jpg" alt="">
-                                                    <h6><a href="#">Katrina J. Alday</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Classics and Oriental Studies</a></h6>
-                                                <div class="wm-courses-price"> <span>$65</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 165</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 11</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
+                                
                                 </ul>
                             </div>
                             <div class="wm-pagination">
