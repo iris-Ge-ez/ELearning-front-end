@@ -132,6 +132,9 @@
 .wmicon-people2:before {
     content: "\e923";
 }
+.wmicon-people2 {
+    content: "\e924";
+}
 .wmicon-telephone:before {
     content: "\e924";
 }
