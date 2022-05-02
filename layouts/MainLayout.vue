@@ -10,9 +10,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="wm-language"> <ul> <li><a href="#">English</a></li> <li><a href="#">Amharic</a></li> </ul> </div>
+                            <div class="wm-language"> <ul> <li><a href="#">English</a></li>  <li> <div id="google_translate_element" style="height:5px"></div> </li></ul> </div>
                             <ul class="wm-stripinfo">
                                 <li><i class="wmicon-location"></i> Adama Ethiopia</li>
+                               
                                 <li><i class="wmicon-technology4"></i> +251 982 2424</li>
                                 <li><i class="wmicon-clock2"></i> Mon - fri: 7:00am - 6:00pm</li>
                             </ul>
@@ -272,9 +273,18 @@ methods:{
      ToggleLogin(){
    
      this.login = !this.login
- }
-}
+ },
+  googleTranslateElementInit() { 
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'}, 
+                'google_translate_element'
+            ); 
+        } 
+},
 
+mounted(){
+    this.googleTranslateElementInit()
+}
 
 }
 </script>

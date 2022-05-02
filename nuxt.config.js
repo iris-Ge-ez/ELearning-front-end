@@ -49,6 +49,7 @@ export default {
            { src: "script/jquery.nicescroll.min.js" },
            { src: "https://maps.googleapis.com/maps/api/js" },
            { src: "script/functions.js" },
+           {src:"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"}
            
          ]
   },

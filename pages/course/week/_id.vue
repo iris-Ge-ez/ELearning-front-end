@@ -165,7 +165,8 @@
 									</ul>																		
 								</div>	
 							</div>
-							<div class="wm-courses-getting-started">
+
+							<!-- <div class="wm-courses-getting-started">
 								<div class="wm-title-full">
 									<h2>Getting Started</h2>
 								</div>
@@ -268,7 +269,7 @@
 									</ul>
 								</div>
 							</div>
-							
+							 -->
 													
 						<div class="wm-ourcourses-right"><nuxt-link to="/course/week/quiz/1"><a href="#" class="wm-previous-icon">Take Quiz For this Week <i class="fa fa-angle-right"></i></a></nuxt-link> </div>			
 													    
