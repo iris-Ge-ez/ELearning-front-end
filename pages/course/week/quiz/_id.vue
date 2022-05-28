@@ -31,7 +31,7 @@
 			<div class="wm-main-section">
 				<div class="container">
 					<div class="row">
-						<aside class="col-md-3">
+						<!-- <aside class="col-md-3">
 							<div class="widget widget_course-price">
 								<div class="wm-widget-heading">
 									<h4>Biology Course </h4>
@@ -81,7 +81,7 @@
 						
 							
 							
-						</aside>
+						</aside> -->
 
 
 
@@ -89,99 +89,75 @@
 						<div class="col-md-9">
 
                     <div class="wm-title-full">
-                                <h2>Quiz For this Week Course</h2>
+                                <h2 v-if="quizs.length > 0">Quiz For this Week Course</h2>
+                                <h2 v-else>No Quiz is Available For this Week Course</h2>
                             </div>
+<!-- {{getQuiz}} --> 
+<div v-if="loading"></div>
 
-
-                                <div class="wm-courses wm-courses-popular">
-                <div class="question ml-sm-5 pl-sm-5 pt-2">
+                                <div v-else class="wm-courses wm-courses-popular">
+                <div class="question ml-sm-5 pl-sm-5 pt-2" v-if="quizs.length > 0">
                     <div class="py-2 h5" style="display:flex !important;margin-bottom:25px;justify-content:space-between">
                         
-                        <b>Q. which option best describes your job role?</b> 
+                        <b v-if="!loading && quizs.length >0">Q. {{quizs[currentquiz].question}}</b> 
                     
-                    <h4 style="color:#b99663"> Q 1/15</h4>
+                    <h4 style="color:#b99663"> Q {{currentquiz+1}}/{{quizs.length}}</h4>
                     </div>
                     <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
-                          <label class="options"> <input type="radio" name="radio"> <span class="checkmark"></span> Small Business Owner or Employee 
-                         </label> <label class="options"><input type="radio" name="radio"> <span class="checkmark"></span> Nonprofit Owner or Employee 
-                          </label> <label class="options">  <input type="radio" name="radio"> <span class="checkmark"></span> Journalist or Activist 
-                           </label> <label class="options"> <input type="radio" name="radio"> <span class="checkmark"></span>  Other
-                           </label> </div>
+                          <label class="options" > <input type="radio" name="radio"> <span class="checkmark"></span> {{quizs[currentquiz].choice_one}}</label> 
+                         <label class="options" ><input type="radio" name="radio"> <span class="checkmark"></span>  {{quizs[currentquiz].choice_two}}
+                          </label> <label class="options">  <input type="radio" name="radio"> <span class="checkmark"></span>  {{quizs[currentquiz].choice_three}}</label>
+                           
+                           <label class="options" > <input type="radio" name="radio"> <span class="checkmark"></span>   {{quizs[currentquiz].choice_four}}
+                           </label>
+                           
+                           </div>
                 </div>
+                                <div class="question ml-sm-5 pl-sm-5 pt-2" v-if="quizs.length > 0">
+                                    <p v-if="showsoln ">Solution {{quizs[currentquiz].solution}}</p>
+                                </div>
+
                 <div class="d-flex align-items-center pt-3" style="display:flex !important;margin-bottom:55px">
-                    <div id="prev"> <button class="btn btn-primary mr-4 " style="margin-right:15px">Previous</button> </div>
-                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+                    <div id="prev" v-if="currentquiz>0"> 
+                        <button class="btn btn-primary mr-2 " style="margin-right:15px" @click="prevQuiz"> Previous</button> </div>
+                         <div v-if="quizs.length >0" class="ml-3 mr-sm-5 " style="margin-right:10px"> <button class="btn btn-primary ml-5" @click="showSoln">show answer</button> </div>
+
+                    <div class="ml-3 mr-sm-5" v-if="currentquiz < quizs.length-1"> <button class="btn btn-success ml-5" @click="nextQuiz">Next</button> </div>
                 </div>
+
             </div>
+
+
+
                         
                             <div class="wm-title-full">
                                 <h2>Next Weeks of The Course</h2>
                             </div>
                             <div class="wm-courses wm-courses-popular">
                                 <ul class="row">
-                                    <nuxt-link to="/course/week/1">
+                                  <nuxt-link v-for="next in weeks" :key="next.id" :to="`/course/week/${next.id}`">
                                     <li class="col-md-4">
                                         <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="../../../../static/extra-images/papular-courses-1.jpg" alt="">
+
+                                            <figure> <a href="#"><img :src="next.thumbnail" alt="">
                                              <span class="wm-popular-hover"> <small>select Week</small> </span> </a>
                                                 <figcaption>
                                                     <img src="../../../../static/extra-images/papular-courses-thumb-1.jpg" alt="">
-                                                    <h6><a href="#">Shelly T. Forrester</a></h6>
+                                                    <!-- <h6><a href="#">Shelly T. Forrester</a></h6> -->
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Advanced Architectural Research</a></h6>
-                                                <div class="wm-courses-price"> <span>Week 1</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 342</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 10</a></li>
-                                                </ul>
+                                                <h6><a href="#">{{next.name}}</a></h6>
+                                                <!-- <div class="wm-courses-price"> <span>Week 1</span> </div> -->
+                                                
+                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i>   last updated {{next.updated_date |date}}</a></li>
+                                                    <!-- <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 10</a></li> -->
+                                                
                                             </div>
                                         </div>
                                     </li>
                                     </nuxt-link>
-                                    <nuxt-link to="/course/week/1">
-                                    <li class="col-md-4">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="../../../../static/extra-images/papular-courses-2.jpg" alt="">
-                                             <span class="wm-popular-hover"> <small>select Week</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="../../../../static/extra-images/papular-courses-thumb-2.jpg" alt="">
-                                                    <h6><a href="#">Sam K. Harrington</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Advanced Landscape & Urbanism</a></h6>
-                                                <div class="wm-courses-price"> <span>Week 2</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 438</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 28</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    </nuxt-link>
-                                    <nuxt-link to="/course/week/1">
-                                    <li class="col-md-4">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="../../../../static/extra-images/papular-courses-3.jpg" alt="">
-                                             <span class="wm-popular-hover"> <small>select Week</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="../../../../static/extra-images/papular-courses-thumb-3.jpg" alt="">
-                                                    <h6><a href="#">Sara A. Shirley</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Transdisciplinary Design</a></h6>
-                                                <div class="wm-courses-price"> <span>Week 3</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 309</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 19</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    </nuxt-link>
+
                                 </ul>
                             </div>						
 						</div>
@@ -199,6 +175,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   layout:"MainLayout",
 
@@ -243,6 +221,77 @@ export default {
            
          ]
 	  }
+  },
+
+
+  data(){
+
+      return{
+       weeks:[],
+       loading:true,
+       quizs:[],
+       currentquiz:0,
+       showsoln:false,
+      }
+  },
+  methods:{
+
+       getWeeks(){
+          this.loading = true
+		  const url = process.env.baseUrl+'/week/'
+
+		  axios.get(url).then(response => {
+			  this.weeks = response.data;
+			  this.loading = false;
+		  }).catch(error => {
+			  console.log(error);
+		  })
+	  },
+
+       getQuizs(){
+          this.loading = true
+
+		  const url = process.env.baseUrl+'/quiz/'
+
+		  axios.get(url).then(response => {
+			  this.quizs = response.data.filter(quiz => {
+             return quiz.week == this.$route.params.id
+        
+      });
+			  this.loading = false;
+		  }).catch(error => {
+			  console.log(error);
+		  })
+	  },
+      nextQuiz(){
+        if(this.currentquiz < this.quizs.length-1){
+          this.currentquiz++;
+          this.showsoln = false;
+        }
+      },
+        prevQuiz(){
+            if(this.currentquiz > 0){
+            this.currentquiz--;
+            this.showsoln = false;
+            }
+        },
+        showSoln(){
+          this.showsoln =! this.showsoln;
+        },
+      
+  },
+  computed:{
+
+      getQuiz(){
+         if(this.quizs.length >0){
+
+              return this.quizs[this.currentquiz]
+         }
+      }
+  },
+  mounted(){    
+      this.getWeeks();
+      this.getQuizs();
   }
 
 }

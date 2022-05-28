@@ -33,11 +33,12 @@
 					<div class="row">
 						<aside class="col-md-3">
 							<div class="widget widget_course-price">
+
 								<div class="wm-widget-heading">
-									<h4>Biology Course </h4>
+									<h4>{{course.name}} </h4>
 								</div>
 							<a href="#">enroll this course</a>
-								<ul>
+								<!-- <ul>
 									<li><a href="#"><i class=" wmicon-social7"></i>234 Students</a></li>
 									<li><a href="#"><i class=" wmicon-clock2"></i><time datetime="2017-02-14">Duration: 2hr30mins</time></a></li>
 									<li><a href="#"><i class=" wmicon-book2"></i>14 Lectures</a></li>
@@ -48,12 +49,12 @@
 										</div>
 										Intermediate</a></li>
 									<li><a href="#"><i class=" wmicon-technology"></i>English Language</a></li>
-								</ul>
+								</ul> -->
 							</div>
 							
 							
 						
-							<div class="widget widget_professor-info">
+							<!-- <div class="widget widget_professor-info">
 								<div class="wm-widget-title">
 									<h2>About Professor</h2>
 								</div>
@@ -68,26 +69,26 @@
 								<a class="wm-read-more" href="#">Read More</a>
 							</div>
 						
-							
+							 -->
 							
 						</aside>
 						<div class="col-md-9">
 							<div class="wm-blog-single wm-courses">
 								<figure class="wm-detail-thumb">
-									<img src="../../static/extra-images/our-courses1.jpg" alt="">
+									<img :src="course.thumbnail" alt="">
 								</figure>
 								<div class="wm-blog-author wm-ourcourses">
 									<div class="wm-blogauthor-left">
-										<img src="../../static/extra-images/our-courses-author.jpg" alt="">
-										<a class="wm-authorpost" href="#">Shelly T. Forrester</a>
+										<img src="../../static/extra-images/papular-courses-thumb-1.jpg" alt="">
+										<!-- <a class="wm-authorpost" href="#">Shelly T. Forrester</a> -->
 									</div>
 									<div class="wm-our-courses">
 										<ul>
 											<li>
-												<a href="#"><i class="wmicon-tool2"></i>328 Viewers</a>
+												<a href="#"><i class="wmicon-tool2"></i>created {{course.created_date |date }}</a>
 											</li>
 											<li>
-												<a href="#"><i class="wmicon-diploma"></i>Certificate: No</a>
+												<a href="#"><i class="wmicon-diploma"></i>last updated {{course.updated_date |date}}</a>
 											</li>
 											<li>
 												<a href="#"><i class="wmicon-symbol"></i>Assesments: Yes</a>
@@ -96,7 +97,7 @@
 									</div>
 								</div>								
 							</div>
-							<div class="wm-courses-reviewes">
+							<!-- <div class="wm-courses-reviewes">
 								<div class="wm-ourcourses-left">
 									<h6>Reviews</h6>
 									<div class="wm-rating">
@@ -108,18 +109,18 @@
 									<a class="wm-previous-icon" href="#"><i class="fa fa-angle-left" ></i>previous Course</a>
 									<a class="wm-Next-icon" href="#">Next Course<i class="fa fa-angle-right" ></i></a>
 								</div>
-							</div>
+							</div> -->
 							<div class="wm-our-course-detail">
 								<div class="wm-title-full">
-									<h2>Advanced Architectural Research</h2>
+									<h2>{{course.name}}</h2>
 								</div>
-								<p class="wm-text">Architecture and engineering have a history where research and practice go hand in hand, where many great practices have grown as a result of fundamental research and where many research projects arise from ground-breaking design. This is especially true during periods of economic inactivity when recent modes of working are called into question and new modes (sometimes based on rediscovered historical precedent) are established.</p>
-								<p>The programme encourages students to develop advanced and speculative approaches to the design of cities, landscape and territories. It promotes high design values and the integration of new and innovative technologies to address the challenges facing contemporary cities, such as urban growth, climate change, globalisation and social inequality. The programme is designed for students of architecture, landscape architecture, engineering and related disciplines, who wish to enhance their academic, intellectual and professional skills. </p>
-								<div class="wm-course-blockquote-two">
+								<p class="wm-text">{{course.description}}</p>
+								<!-- <p>The programme encourages students to develop advanced and speculative approaches to the design of cities, landscape and territories. It promotes high design values and the integration of new and innovative technologies to address the challenges facing contemporary cities, such as urban growth, climate change, globalisation and social inequality. The programme is designed for students of architecture, landscape architecture, engineering and related disciplines, who wish to enhance their academic, intellectual and professional skills. </p> -->
+								<!-- <div class="wm-course-blockquote-two">
 									<blockquote>Training is everything. The peach was once a bitter almond; cauliflower is nothing but cabbage with an education.</blockquote>
 									<span>- Mark Twain</span>
-								</div>								
-								<div class="wm-courses-info">
+								</div>								 -->
+								<!-- <div class="wm-courses-info">
 									<div class="wm-title-full">
 										<h2>What You’ll Study</h2>
 									</div>
@@ -135,8 +136,8 @@
 										<li><a href="#" class="wmicon-lock"></a>Ecology & social sciences will also be considered</li>
 										<li><a href="#" class="wmicon-lock"></a>Mathematics and Statistics</li>
 									</ul>
-								</div>								
-								<div class="wm-certification-listing">
+								</div>								 -->
+								<!-- <div class="wm-certification-listing">
 									<div class="wm-title-full">
 										<h2>What You Have to Perform After Taking This Course</h2>
 									</div>
@@ -151,9 +152,8 @@
 										<li><a href="#" class="wmicon-mark"></a>Innovative methodologies</li>
 										<li><a href="#" class="wmicon-mark"></a>Strategies & interventions  </li>
 									</ul>																		
-								</div>	
+								</div>	 -->
 							</div>
-
 
 
 
@@ -162,71 +162,30 @@
                             </div>
                             <div class="wm-courses wm-courses-popular">
                                 <ul class="row">
-                                 <nuxt-link to="/course/week/2"> 
+                                 <nuxt-link v-for="week in thisCourseWeeks" :key="week.id"  :to="`/course/week/${week.id}`"> 
                                     <li  class="col-md-4">
                                         <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="../../static/extra-images/papular-courses-1.jpg" alt="">
+                                            <figure> <a href="#"><img :src="week.thumbnail" alt="">
 											 <span class="wm-popular-hover"> <small>select Week</small> </span> </a>
                                                 <figcaption>
                                                     <img src="../../static/extra-images/papular-courses-thumb-1.jpg" alt="">
-                                                    <h6><a href="#">Shelly T. Forrester</a></h6>
+                                                    <!-- <h6><a href="#">Shelly T. Forrester</a></h6> -->
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Advanced Architectural Research</a></h6>
-                                                <div class="wm-courses-price"> <span>Week 1</span> </div>
-                                                <ul>
+                                                <h6><a href="#">{{week.name}}</a></h6>
+                                                <div class="wm-courses-price">  updated {{week.updated_date |date}} </div>
+                                                <!-- <ul>
                                                     <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 342</a></li>
                                                     <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 10</a></li>
-                                                </ul>
+                                                </ul> -->
                                             </div>
                                         </div>
                                     </li>
                                </nuxt-link>
 
-						<nuxt-link to="/course/week/2"> 
-
-                                    <li class="col-md-4">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="../../static/extra-images/papular-courses-2.jpg" alt="">
-											 <span class="wm-popular-hover"> <small>select Week</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="../../static/extra-images/papular-courses-thumb-2.jpg" alt="">
-                                                    <h6><a href="#">Sam K. Harrington</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Advanced Landscape & Urbanism</a></h6>
-                                                <div class="wm-courses-price"> <span>Week 2</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 438</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 28</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-						</nuxt-link>
-						<nuxt-link to="/course/week/2"> 
-                                    <li class="col-md-4">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="../../static/extra-images/papular-courses-3.jpg" alt="">
-											 <span class="wm-popular-hover"> <small>select Week</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="../../static/extra-images/papular-courses-thumb-3.jpg" alt="">
-                                                    <h6><a href="#">Sara A. Shirley</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Transdisciplinary Design</a></h6>
-                                                <div class="wm-courses-price"> <span>Week 3</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 309</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 19</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-						</nuxt-link>
+						
+						
                                 </ul>
                             </div>						
 						</div>
@@ -245,6 +204,9 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
   layout:"MainLayout",
 
@@ -289,8 +251,57 @@ export default {
            
          ]
 	  }
-  }
+  },
 
+  data(){
+
+	  return{
+           loading: true,
+		   course:[],
+		   weeks:[],
+	  }
+
+  }
+  ,
+  methods:{
+	  getCourse(){
+
+		  const url = process.env.baseUrl+'/course/'+this.$route.params.id+'/'
+
+		  axios.get(url).then(response => {
+			  this.course = response.data;
+			  this.loading = false;
+		  }).catch(error => {
+			  console.log(error);
+		  })
+	  },
+
+	  getWeeks(){
+
+		  const url = process.env.baseUrl+'/week/'
+
+		  axios.get(url).then(response => {
+			  this.weeks = response.data;
+			  this.loading = false;
+		  }).catch(error => {
+			  console.log(error);
+		  })
+	  },
+
+
+  },
+
+  computed:{
+        
+		thisCourseWeeks(){
+			return this.weeks.filter(week => week.course == this.$route.params.id)
+		}
+  },
+
+  mounted(){
+	  this.getCourse();
+	  this.getWeeks();
+  }
 }
 </script>
 

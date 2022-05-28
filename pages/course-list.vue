@@ -30,7 +30,7 @@
                 <div class="container">
                     <div class="row">
                         
-                        <aside class="col-md-3">
+                        <!-- <aside class="col-md-3">
                             <div class="widget wm-search-course">
                                 <h3 class="wm-short-title wm-color">Find Your Course</h3>
                                 <p>Find your course here:</p>
@@ -119,14 +119,13 @@
                                 </ul>
                             </div>
                           
-                        </aside>
+                        </aside> -->
                         
                         <div class="col-md-9">
                             <div class="wm-filter-box">
                                 <div class="wm-apply-select">
-                                    <select>
-                                        <option>Grade 11</option>
-                                        <option>Grade 12</option>
+                                    <select  v-model="grade">
+                                        <option v-for="grade in grades" :key="grade.id" :value="grade.id"> Grade {{ grade.grade}}</option>
                                         
                                     </select>
                                 </div>            
@@ -142,196 +141,40 @@
                             </div>
                             <div class="wm-courses wm-courses-popular wm-courses-mediumsec">
                                 <ul class="row">
-
-                            <nuxt-link to="/course/1">
+                                      <!-- {{courses}} -->
+                            <nuxt-link v-for="course in  filterd_courses" :key="course.id" :to="`/course/${course.id}`">
                                     <li class="col-md-12">
                                         <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-1.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
+                                            <figure> <a href="#"><img :src="course.thumbnail" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
+                                                <figcaption>    
                                                     <img src="extra-images/papular-courses-thumb-1.jpg" alt="">
-                                                    <h6><a href="#">Shelly T. Forrester</a></h6>
+                                                    <h6><a href="#"></a></h6>
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Advanced Architectural Research</a></h6>
-                                                <p>The course combines study of the history, archaeology and art of all these classical world. It looks at the societies and cultures of the ancient Greel Mediterranean world through their written texts.</p>
-                                                <div class="wm-courses-price"> <span>$32</span> </div>
+                                                <h6><a href="#">{{course.name}}</a></h6>
+                                                <p>{{course.description.slice(0,100)}}</p>
                                                 <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 342</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 10</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-time2"></i> 1 year</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-location"></i> Campus L2</a></li>
+                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> grade {{ getGrade(course.grade) }}</a></li>
+                                                    <li><a href="#" class="wm-color"><i class="wmicon-location"></i> Posted {{course.updated_date | date}}</a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </li>
                                     </nuxt-link>
-                            <nuxt-link to="/course/1">
-                                    <li class="col-md-12">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-2.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-2.jpg" alt="">
-                                                    <h6><a href="#">Sam K. Harrington</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Advanced Landscape & Urbanism</a></h6>
-                                                <p>Fine Art is the making and study of visual art. It educates and prepares students to become artists and to follow other practices that are aligned to the making of art.</p>
-                                                <div class="wm-courses-price"> <span>Free</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 438</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 28</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-time2"></i> 2 year</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-location"></i> Campus L1</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                            </nuxt-link>
-                           <nuxt-link to="/course/1">
-                                    <li class="col-md-12">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-3.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-3.jpg" alt="">
-                                                    <h6><a href="#">Sara A. Shirley</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Transdisciplinary Design</a></h6>
-                                                <p>The Ruskin School of Art offers a three-year studio-based BFA course in which students work alongside each other in collaboratively organised studios.</p>
-                                                <div class="wm-courses-price"> <span>$79</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 309</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 19</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-time2"></i> 1 year</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-location"></i> Campus L3</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                           </nuxt-link>
 
-                           <nuxt-link to="/course/1">
-                                    <li class="col-md-12">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-5.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-4.jpg" alt="">
-                                                    <h6><a href="#">Julius M. Lepage</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Economics & Quality Management</a></h6>
-                                                <p>Whereas many fine art courses run in an environment devoted exclusively to art and design, Ruskin students, as members of a collegiate university, have the advantage of contact.</p>
-                                                <div class="wm-courses-price"> <span>$50</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 298</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 11</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-time2"></i> 1 year</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-location"></i> Campus L2</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                           </nuxt-link>
-                           <nuxt-link to="/course/1">
-                                    <li class="col-md-12">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-6.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-5.jpg" alt="">
-                                                    <h6><a href="#">Kayla A. McCrea</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Philosophy, Politics and Economics (PPE)</a></h6>
-                                                <p>Jack Stanton, who graduated in 2013 and now works as a professional artist, recalls: ‘I think the most important element of the Ruskin is the seriousness with which your work is considered by tutors.</p>
-                                                <div class="wm-courses-price"> <span>$99</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 222</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 76</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-time2"></i> 1 year</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-location"></i> Campus L2</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                           </nuxt-link>
-                           <nuxt-link to="/course/1">
-                                    <li class="col-md-12">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-7.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-6.jpg" alt="">
-                                                    <h6><a href="#">Allan L. Oakes</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Modern Languages and Linguistics</a></h6>
-                                                <p>The first year of the course is structured to introduce students to each other, to the resources of the school and to the staff involved in teaching and running the Ruskin.</p>
-                                                <div class="wm-courses-price"> <span>$49</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 248</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 21</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-time2"></i> 2 year</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-location"></i> Campus L3</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
 
-                           </nuxt-link>
-                           <nuxt-link to="/course/1">
-                                    <li class="col-md-12">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-8.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-7.jpg" alt="">
-                                                    <h6><a href="#">Virginia R. Cruz</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">History (Ancient and Modern)</a></h6>
-                                                <p>The intimate working environment of the school, arranged in two buildings, allows art history, theory and criticism to be treated as integral to the development of studio work. </p>
-                                                <div class="wm-courses-price"> <span>$79</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 188</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 11</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-time2"></i> 1 year</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-location"></i> Campus L2</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                           </nuxt-link>
-                           <nuxt-link to="/course/1">
-                                    <li class="col-md-12">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-9.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-8.jpg" alt="">
-                                                    <h6><a href="#">Roslyn W. Beavers</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Classical Archaeology & Ancient History</a></h6>
-                                                <p>After graduation, most students go on to work in fine art as practising artists, teachers and art writers, or as curators in public and private galleries and for arts councils and organisations.</p>
-                                                <div class="wm-courses-price"> <span>$89</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 176</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 30</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-time2"></i> 1 year</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-location"></i> Campus L2</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                           </nuxt-link>
+                            
+                           
+
+                          
+                          
+                           
+                          
                                 </ul>
                             </div>
-                            <div class="wm-pagination">
+
+                            <!-- <div class="wm-pagination">
                                 <ul>
                                     <li><a href="#" aria-label="Previous"> <i class="wmicon-arrows4"></i> Previous</a></li>
                                     <li class="active"><a href="#">1</a></li>
@@ -341,7 +184,7 @@
                                     <li><a href="#">18</a></li>
                                     <li><a href="#" aria-label="Next"> <i class="wmicon-arrows4"></i> Next</a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
@@ -356,8 +199,105 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
- layout:"MainLayout"
+ layout:"MainLayout",
+ data(){
+
+     return {
+
+         courses:[],
+         loading:true,
+         instructors:[],
+         grades:[],
+         filterd_courses:[],
+
+         grade:"",
+     }
+
+    
+ },
+    methods:{
+        getCourses(){
+            
+            this.loading = true;
+            const url = process.env.baseUrl+'/course/'
+            
+            axios.get(url).then(response=>{
+                this.courses = response.data;
+                this.filterd_courses = response.data;
+                console.log(this.courses)
+                this.loading = false
+            }).catch(error=>{
+                console.log(error)
+                this.loading = false
+            })
+        },
+        FilterCourses(){
+               this.filterd_courses = this.courses.filter(course=>{
+                   return course.grade == this.grade
+               })
+        },
+        // NO instractors Api Found To fetch From Backend
+
+        getInstractors(){
+            this.loading = true;
+            const url = process.env.baseUrl+'/instructor/'
+            
+            axios.get(url).then(response=>{
+                this.instructors = response.data;
+                console.log(this.instructors)
+                this.loading = false
+            }).catch(error=>{
+                console.log(error)
+                this.loading = false
+            })
+        },
+
+        getGrades(){
+            this.loading = true;
+            const url = process.env.baseUrl+'/grade/'
+            
+            axios.get(url).then(response=>{
+                this.grades = response.data;
+                console.log(this.grades)
+                this.loading = false
+            }).catch(error=>{
+                console.log(error)
+                this.loading = false
+            })
+        },
+
+        // Parse Indivisual APi grade
+        getGrade(id){
+            const grade =  this.grades.filter(grade=>{
+                 return grade.id == id
+                
+            })
+            if(grade.length > 0){
+                return grade[0].grade
+            }
+        }
+    },
+
+    watch: {
+    // whenever grdae changes, this function will run
+     grade(newValue,oldValue){
+         console.log("change " +newValue)
+        
+        this.FilterCourses()
+     }
+  },
+    computed:{
+        
+       
+    },
+
+    mounted(){
+        this.getCourses()
+        this.getGrades()
+    }
 }
 </script>
 

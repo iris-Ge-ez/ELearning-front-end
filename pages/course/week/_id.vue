@@ -31,10 +31,11 @@
 			<div class="wm-main-section">
 				<div class="container">
 					<div class="row">
-						<aside class="col-md-3">
-							<div class="widget widget_course-price">
+						<!-- <aside class="col-md-3"> -->
+							<!-- <div class="widget widget_course-price">
 								<div class="wm-widget-heading">
 									<h4>Biology Course </h4>
+                  {{week}}
 								</div>
 							<a href="#">enroll this Week 4</a>
 								<ul>
@@ -48,9 +49,9 @@
 										Intermediate</a></li>
 									<li><a href="#"><i class=" wmicon-technology"></i>English Language</a></li>
 								</ul>
-							</div>
+							</div> -->
 							
-							
+<!-- 							
 							<div class="widget widget_archive">
 								<div class="wm-widget-title">
 									<h2>Archive</h2>
@@ -79,48 +80,56 @@
 								<a class="wm-read-more" href="#">Read More</a>
 							</div>
 						
+							 -->
 							
-							
-						</aside>
+						<!-- </aside> -->
 						<div class="col-md-9">
 							<div class="wm-blog-single wm-courses">
 								<figure class="wm-detail-thumb">
-									<img src="../../../static/extra-images/our-courses1.jpg" alt="">
+                    <video :src="week.video" width="848" height="370" controls :poster="week.thumbnail">
+
+                      
+                    </video>
+
+									<!-- <img :src="week.thumbnail" alt=""> -->
 								</figure>
 								<div class="wm-blog-author wm-ourcourses">
 									<div class="wm-blogauthor-left">
-										<img src="../../../static/extra-images/our-courses-author.jpg" alt="">
-										<a class="wm-authorpost" href="#">Mr Teacher</a>
+										<img src="../../../static/extra-images/papular-courses-thumb-3.jpg" alt="">
+										<!-- <a class="wm-authorpost" href="#">Mr Teacher</a> -->
 									</div>
 									<div class="wm-our-courses">
 										<ul>
 											<li>
-												<a href="#"><i class="wmicon-tool2"></i>328 Viewers</a>
+												<a href="#"><i class="wmicon-tool2"></i> last updated {{week.updated_date | date}}</a>
 											</li>
-											<li>
+											<!-- <li>
 												<a href="#"><i class="wmicon-diploma"></i>Certificate: No</a>
 											</li>
 											<li>
 												<a href="#"><i class="wmicon-symbol"></i>Assesments: Yes</a>
-											</li>
+											</li> -->
 										</ul>
 									</div>
 								</div>								
 							</div>
 							<div class="wm-courses-reviewes">
 								<div class="wm-ourcourses-left">
-									<h6>Reviews</h6>
-									<div class="wm-rating">
+									<h6>{{week.name}}</h6>
+									<!-- <div class="wm-rating">
 										<span class="rating-box" style="width:100%"></span>																				
 									</div>
-									<a href="#">3 Reviews</a>
+									<a href="#">3 Reviews</a> -->
 								</div>
 								<div class="wm-ourcourses-right">
-									<a class="wm-previous-icon" href="#"><i class="fa fa-angle-left" ></i>previous Week</a>
-									<a class="wm-Next-icon" href="#">Next Week<i class="fa fa-angle-right" ></i></a>
-                  	<a class="wm-more-details" style="margin-left:10px;height:45px" href="#">Download Pdf</a>
+									<!-- <a class="wm-previous-icon" href="#"><i class="fa fa-angle-left" ></i>previous Week</a>
+									<a class="wm-Next-icon" href="#">Next Week<i class="fa fa-angle-right" ></i></a> -->
+                  <nuxt-link :to="`/course/week/quiz/${week.id}`"><a href="#" class="wm-previous-icon">Take Quiz For this Week <i class="fa fa-angle-right"></i></a></nuxt-link>
+                  	<a class="wm-more-details" style="margin-left:10px;height:45px" :href="week.book">Download Pdf</a>
 								</div>
 							</div>
+
+<!--               
 							<div class="wm-our-course-detail">
 								<div class="wm-title-full">
 									<h2>Advanced Architectural Research</h2>
@@ -164,7 +173,7 @@
 										<li><a href="#" class="wmicon-mark"></a>Strategies & interventions  </li>
 									</ul>																		
 								</div>	
-							</div>
+							</div> -->
 
 							<!-- <div class="wm-courses-getting-started">
 								<div class="wm-title-full">
@@ -271,8 +280,8 @@
 							</div>
 							 -->
 													
-						<div class="wm-ourcourses-right"><nuxt-link to="/course/week/quiz/1"><a href="#" class="wm-previous-icon">Take Quiz For this Week <i class="fa fa-angle-right"></i></a></nuxt-link> </div>			
-													    
+						<div class="wm-ourcourses-right"> </div>			
+<!-- 													    
 							<div class="wm-courses-author-info">
 								<div class="wm-title-full">
 									<h2>Course Instructors</h2>
@@ -304,76 +313,38 @@
 									</li>
 								</ul>						
 							</div>
-                            
+                             -->
                         
                             <div class="wm-title-full">
-                                <h2>Next Weeks of The Course</h2>
+                                <h2>Other Weeks of The Course</h2>
                             </div>
                             <div class="wm-courses wm-courses-popular">
                                 <ul class="row">
-                                    <nuxt-link to="/course/week/1">
+                                    <nuxt-link v-for="next in nextWeeks" :key="next.id" :to="`/course/week/${next.id}`">
                                     <li class="col-md-4">
                                         <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="../../../static/extra-images/papular-courses-1.jpg" alt="">
+
+                                            <figure> <a href="#"><img :src="next.thumbnail" alt="">
                                              <span class="wm-popular-hover"> <small>select Week</small> </span> </a>
                                                 <figcaption>
                                                     <img src="../../../static/extra-images/papular-courses-thumb-1.jpg" alt="">
-                                                    <h6><a href="#">Shelly T. Forrester</a></h6>
+                                                    <!-- <h6><a href="#">Shelly T. Forrester</a></h6> -->
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Advanced Architectural Research</a></h6>
-                                                <div class="wm-courses-price"> <span>Week 1</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 342</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 10</a></li>
-                                                </ul>
+                                                <h6><a href="#">{{next.name}}</a></h6>
+                                                <!-- <div class="wm-courses-price"> <span>Week 1</span> </div> -->
+                                                
+                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i>   last updated {{next.updated_date |date}}</a></li>
+                                                    <!-- <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 10</a></li> -->
+                                                
                                             </div>
                                         </div>
                                     </li>
                                     </nuxt-link>
-                                    <nuxt-link to="/course/week/1">
-                                    <li class="col-md-4">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="../../../static/extra-images/papular-courses-2.jpg" alt="">
-                                             <span class="wm-popular-hover"> <small>select Week</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="../../../static/extra-images/papular-courses-thumb-2.jpg" alt="">
-                                                    <h6><a href="#">Sam K. Harrington</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Advanced Landscape & Urbanism</a></h6>
-                                                <div class="wm-courses-price"> <span>Week 2</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 438</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 28</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    </nuxt-link>
-                                    <nuxt-link to="/course/week/1">
-                                    <li class="col-md-4">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="../../../static/extra-images/papular-courses-3.jpg" alt="">
-                                             <span class="wm-popular-hover"> <small>select Week</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="../../../static/extra-images/papular-courses-thumb-3.jpg" alt="">
-                                                    <h6><a href="#">Sara A. Shirley</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Transdisciplinary Design</a></h6>
-                                                <div class="wm-courses-price"> <span>Week 3</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 309</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 19</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    </nuxt-link>
+
+                                   
+                                    
                                 </ul>
                             </div>						
 						</div>
@@ -510,6 +481,10 @@
 </template>
 
 <script>
+
+ import axios from 'axios'
+
+
 export default {
   layout:"MainLayout",
 
@@ -518,7 +493,10 @@ data(){
 	return {
 
 		expandchat:false,
-		view_users:false
+		view_users:false,
+    week:[],
+    loading:true,
+    nextWeeks:[],
 	}
 },
   head(){
@@ -570,8 +548,45 @@ data(){
 	  },
 	  ToggleUserView(){
 		  this.view_users = !this.view_users
-	  }
+	  },
+
+  // Featch One week
+    	getWeek(){
+
+		  const url = process.env.baseUrl+'/week/'+this.$route.params.id+'/'
+
+		  axios.get(url).then(response => {
+			  this.week = response.data;
+			  this.loading = false;
+		  }).catch(error => {
+			  console.log(error);
+		  })
+	  },
+
+// Fetch All Next Weeks
+    	  getNextWeeks(){
+
+		  const url = process.env.baseUrl+'/week/'
+
+		  axios.get(url).then(response => {
+
+      this.nextWeeks = response.data.filter(week => {
+             return week.id!= this.$route.params.id
+        
+      });
+			  this.loading = false;
+		  }).catch(error => {
+			  console.log(error);
+		  })
+	  },
+  },
+
+  mounted(){
+        this.getWeek()
+        this.getNextWeeks()
+
   }
+
 
 }
 </script>
