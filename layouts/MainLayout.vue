@@ -10,7 +10,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="wm-language"> <ul> <li><a href="#">English</a></li>  <li> <div id="google_translate_element" style="height:5px"></div> </li></ul> </div>
+                            <div class="wm-language"> <ul> <li><a href="#">English</a></li>  <li> <div id="google_translate_element" ></div> </li></ul> </div>
                             <ul class="wm-stripinfo">
                                 <li><i class="wmicon-location"></i> Adama Ethiopia</li>
                                
@@ -231,18 +231,80 @@
             </div>
 
             <div v-else class="wm-modallogin-form ">
-                <span class="wm-color">create Your Account today</span>
-                <form>
+                <div v-if="student">
+
+                    <span class="wm-color">create Your Student Account today</span>
+                <form @submit.prevent="RegisterUser" >
                     <ul>
-                        <li> <input type="text" value="Your Username" onblur="if(this.value == '') { this.value ='Your Username'; }" onfocus="if(this.value =='Your Username') { this.value = ''; }"> </li>
-                        <li> <input type="text" value="Your E-mail" onblur="if(this.value == '') { this.value ='Your E-mail'; }" onfocus="if(this.value =='Your E-mail') { this.value = ''; }"> </li>
-                        <li> <input type="password" value="password" onblur="if(this.value == '') { this.value ='password'; }" onfocus="if(this.value =='password') { this.value = ''; }"> </li>
-                        <li> <input type="text" value="Confirm Password" onblur="if(this.value == '') { this.value ='Confirm Password'; }" onfocus="if(this.value =='Confirm Password') { this.value = ''; }"> </li>
-                        <li> <input type="submit" value="Create Account"> </li>
+                        <li> <input type="text" v-model="username" required placeholder="Your Username" onblur="if(this.value == '') { this.value ='Your Username'; }" onfocus="if(this.value =='Your Username') { this.value = ''; }"> </li>
+                        <li> <input type="text" v-model="first_name" required placeholder="Your Firstname"> </li>
+                        <li> <input type="text" v-model="last_name"  required placeholder="Your Lastname"> </li>
+                        <select style="margin-bottom:5px" v-model="sex">
+
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        <li> <input type="text" v-model="phone" required placeholder="Phone Number"> </li>
+                        <li style="background-color:#f2f2f2;padding:5px;"> Profile Picture <input @change="SaveProfile" type="file" placeholder="ProfilePicture"> </li>
+                         <select v-model=" academic_level" >
+
+                            <option value="Lower School">Lower School</option>
+                            <option value="Elementery School">Elementery School</option>
+                            <option value="High School">High School</option>
+                            <option value="Preparatory School">Preparatory School</option>
+                        </select>
+
+                        <li> <input type="text" v-model="email" required placeholder="Your E-mail" onblur="if(this.value == '') { this.value ='Your E-mail'; }" onfocus="if(this.value =='Your E-mail') { this.value = ''; }"> </li>
+                        <li> <input type="password" v-model="password" required placeholder="password" onblur="if(this.value == '') { this.value ='password'; }" onfocus="if(this.value =='password') { this.value = ''; }"> </li>
+                        <!-- <li> <input type="text" value="Confirm Password" onblur="if(this.value == '') { this.value ='Confirm Password'; }" onfocus="if(this.value =='Confirm Password') { this.value = ''; }"> </li> -->
+                        <li> <input type="submit" :value="creating ? 'Creating ...' :'Create Account'"> </li>
                     </ul>
                 </form>
+                
+                </div>
+                <div v-else>
+
+                    <span class="wm-color">create Your Instarctor Account today</span>
+                <form >
+                        <ul>
+                        <li> <input type="text" v-model="username2" required placeholder="Your Username" onblur="if(this.value == '') { this.value ='Your Username'; }" onfocus="if(this.value =='Your Username') { this.value = ''; }"> </li>
+                        <li> <input type="text" v-model="first_name2" required placeholder="Your Firstname"> </li>
+                        <li> <input type="text" v-model="last_name2"  required placeholder="Your Lastname"> </li>
+                        <select style="margin-bottom:5px" v-model="sex2">
+
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+
+                        <select style="margin-bottom:5px" v-model="field_of_study">
+
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+
+                        <li> <input type="text" v-model="phone2" required placeholder="Phone Number"> </li>
+                        <li> <textarea rows="10" cols="40" v-model="description" required placeholder="About You"> </textarea> </li>
+                        <li style="background-color:#f2f2f2;padding:5px;"> Profile Picture <input @change="SaveProfile" type="file" placeholder="ProfilePicture"> </li>
+                         <select v-model="academic_completion_university" >
+
+                            <option value="Lower School">Lower School</option>
+                            <option value="Elementery School">Elementery School</option>
+                            <option value="High School">High School</option>
+                            <option value="Preparatory School">Preparatory School</option>
+                        </select>
+
+                        <li> <input type="text" v-model="email2" required placeholder="Your E-mail" onblur="if(this.value == '') { this.value ='Your E-mail'; }" onfocus="if(this.value =='Your E-mail') { this.value = ''; }"> </li>
+                        <li> <input type="password" v-model="password2" required placeholder="password" onblur="if(this.value == '') { this.value ='password'; }" onfocus="if(this.value =='password') { this.value = ''; }"> </li>
+                        <!-- <li> <input type="text" value="Confirm Password" onblur="if(this.value == '') { this.value ='Confirm Password'; }" onfocus="if(this.value =='Confirm Password') { this.value = ''; }"> </li> -->
+                        <li> <input type="submit" :value="creating ? 'Creating ...' :'Create Account'"> </li>
+                    </ul>
+                </form>
+                
+                </div>
                
-                <p>Already a member? <a @click="ToggleLogin" href="#">Sign-in Here!</a></p>
+                <p>Already a member? <a @click="ToggleLogin" href="#">Sign-in Here!</a> </p>
+                <p>Want {{!student ? 'Student':'Instractor'}} Account? <a @click="ToggleRole" href="#">{{!student ? 'Student Account':'Instractor Account'}}</a> </p>
+
             </div>
 
           </div>
@@ -258,18 +320,93 @@
 
 <script>
 
+import axios from 'axios'
+
 export default {
 
  data(){
 
      return{
 
-         login:true
+         login:true,
+         student:true,
+         creating:false,
+
+        //  Student Info 
+
+        sex:"",
+        phone:"",
+        profile_picture:"",
+        academic_level:"",
+        username:"",
+        first_name:"",
+        last_name:"",
+        email:"",
+        password:"",
+
+
+        // Instractor Info
+
+        sex2:"",
+        phone2:"",
+        profile_picture2:"",
+        academic_completion_university:"",
+        username2:"",
+        first_name2:"",
+        last_name2:"",
+        email2:"",
+        password2:"",
+        field_of_study:"",
+        description:"",
+
      }
  },
 
 
 methods:{
+   
+   SaveProfile(e){
+           
+        this.profile_picture = e.target.files[0];
+    },
+   
+   RegisterUser(){
+       this.creating = true
+            const form = new FormData();
+            const url = process.env.Url+"/student-registration/" 
+
+            form.append('username',this.username);
+            form.append('first_name',this.first_name);
+            form.append('last_name',this.last_name);
+            form.append('sex',this.sex);
+            form.append('phone',this.phone);
+            form.append('password',this.password);
+            form.append('email',this.email);
+            form.append('academic_level',this.academic_level);
+
+
+
+            form.append('profile_picture',this.profile_picture)
+
+            axios.post(url,form).then(response=>{
+
+                console.log(response.data)
+            
+
+                    alert("Registration Successful")
+                     this.creating = false
+                  
+                }).catch(error=>{
+                    console.log(error.response.data)
+                     this.creating = false
+                })
+   },
+
+   
+
+    ToggleRole(){
+        this.student = !this.student;
+        },
      ToggleLogin(){
    
      this.login = !this.login

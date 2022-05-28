@@ -80,7 +80,7 @@ export default {
 
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:8000/core-api',
-    imgUrl: process.env.BASE_URL || 'http://localhost:8000',
+    Url: process.env.BASE_URL || 'http://localhost:8000',
     
   }
 }
