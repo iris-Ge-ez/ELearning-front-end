@@ -145,27 +145,19 @@
 
                          <div class="wm-promo-box wm-typography-element">
 								<div class="wm-promo-box-text">
-									<h2>University Course</h2>
-									<span class="wm-save">
-										<i class="fa fa-heart" aria-hidden="true"></i>
-										Biology
-									</span>
+									<h2> Biology </h2>
+									
 									<span>Grade 11</span>																	
 								</div>
-								<p>It is a long established fact that a reader will be distracted by the read able content of a page when looking at its layout. </p>
 								<a class="read-more" href="#">Join Chatroom</a>
 							</div>
 
                             <div class="wm-promo-box wm-typography-element">
 								<div class="wm-promo-box-text">
-									<h2>University Course</h2>
-									<span class="wm-save">
-										<i class="fa fa-heart" aria-hidden="true"></i>
-										Chemistry
-									</span>
+									<h2> Chemistry</h2>
+									
 									<span>Grade 12</span>																	
 								</div>
-								<p>It is a long established fact that a reader will be distracted by the read able content of a page when looking at its layout. </p>
 								<a class="read-more" href="#">Join Chatroom</a>
 							</div>
 

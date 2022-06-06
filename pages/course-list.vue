@@ -27,8 +27,8 @@
 
             <!--// Main Section \\-->
             <div class="wm-main-section">
-                <div class="container">
-                    <div class="row">
+                <div class="container ml-5">
+                    <div class="row" >
                         
                         <!-- <aside class="col-md-3">
                             <div class="widget wm-search-course">
@@ -121,12 +121,12 @@
                           
                         </aside> -->
                         
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="wm-filter-box">
                                 <div class="wm-apply-select">
                                     <select  v-model="grade">
                                         <option v-for="grade in grades" :key="grade.id" :value="grade.id"> Grade {{ grade.grade}}</option>
-                                        
+                                        <option value="">All</option>
                                     </select>
                                 </div>            
                                 
@@ -235,9 +235,13 @@ export default {
             })
         },
         FilterCourses(){
-               this.filterd_courses = this.courses.filter(course=>{
-                   return course.grade == this.grade
-               })
+              if(this.grade == ""){
+                this.filterd_courses = this.courses
+                }else{
+                    this.filterd_courses = this.courses.filter(course=>{
+                        return course.grade == this.grade
+                    })
+                }
         },
         // NO instractors Api Found To fetch From Backend
 

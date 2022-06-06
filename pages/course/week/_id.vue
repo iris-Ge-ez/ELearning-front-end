@@ -83,10 +83,10 @@
 							 -->
 							
 						<!-- </aside> -->
-						<div class="col-md-9">
+						<div class="col-md-12">
 							<div class="wm-blog-single wm-courses">
 								<figure class="wm-detail-thumb">
-                    <video :src="week.video" width="848" height="370" controls :poster="week.thumbnail">
+                    <video :src="week.video" width="1118" height="370" controls :poster="week.thumbnail">
 
                       
                     </video>

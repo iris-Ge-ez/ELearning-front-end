@@ -34,10 +34,10 @@
 							 <div class="wm-student-dashboard-nav">
 								 <div class="wm-student-nav">
 									<figure>
-										<a href="#"><img src="extra-images/students-setting-1.jpg" alt=""></a>
+										<a href="#"><img src="extra-images/megersa.jpg" alt=""></a>
 									</figure>
 									<div class="wm-student-nav-text">
-										<h6>Kevin Nickols</h6>
+										<h6>Megersa Fekadu</h6>
 										<a href="#">update image</a>
 									</div>
 									<ul>

@@ -157,7 +157,7 @@
 
 
 
-                            <div class="wm-title-full">
+                            <div class="wm-title-full" style="margin-top:50px">
                                 <h2>All Weeks of The Course</h2>
                             </div>
                             <div class="wm-courses wm-courses-popular">
@@ -259,6 +259,7 @@ export default {
            loading: true,
 		   course:[],
 		   weeks:[],
+
 	  }
 
   }
@@ -274,6 +275,10 @@ export default {
 		  }).catch(error => {
 			  console.log(error);
 		  })
+	  },
+	  
+	  setCourse(){
+		  this.$store.commit('setCourse',this.course)
 	  },
 
 	  getWeeks(){
@@ -299,6 +304,7 @@ export default {
   },
 
   mounted(){
+	  this.setCourse()
 	  this.getCourse();
 	  this.getWeeks();
   }

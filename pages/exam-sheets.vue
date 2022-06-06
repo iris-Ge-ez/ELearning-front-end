@@ -32,7 +32,7 @@
 
 
 
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="wm-filter-box">
                                 <div class="wm-apply-select">
                                     <select v-model="year">
@@ -99,7 +99,7 @@
                                     <li v-for="exam in filterdexams" :key="exam.id" class="col-md-4">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a :href="exam.exam"> <img
-                                                        src="extra-images/papular-courses-thumb-6.jpg" alt="">
+                                                        src="extra-images/download.jpg" alt="">
                                                     <span class="wm-popular-hover"> <small>Download Exam</small> </span>
                                                 </a>
                                                 <figcaption style="padding-top:75px;height:100%">
@@ -179,6 +179,7 @@ export default {
     
 
     methods: {
+
         getExams() {
             this.loading = true
 
@@ -192,6 +193,7 @@ export default {
                 console.log(error);
             })
         },
+        
 
 // Filter Exams 
         filterexams(field, value) {

@@ -15,13 +15,13 @@
                 </div>
                 <div class="wm-banner-one-nav">
                     <div class="wm-banner-one-nav-layer" style="background-color:#222845;color:#fff">
-                        <h1 style="color:#fff">International Programmes</h1>
-                        <p>The study programmes of the Enroll Campus University are open to people from all nationalities.</p>
+                        <h1 style="color:#fff">Ethiopian Secondary School</h1>
+                        <p>A place where millions of students get ready for the next level of education which is a higher education.</p>
                         <a href="#" class="wm-banner-btn">learn more</a>
                     </div>
                     <div class="wm-banner-one-nav-layer">
-                        <h1>UA Degree Programmes</h1>
-                        <p>We offer companies the opportunity to access the technology and knowledge developed at the  Enroll Campus University.</p>
+                        <h1>UEE</h1>
+                        <p>We prepared previous year's entrance examination to test and prepare yourself for the future exam.</p>
                         <a href="#" class="wm-banner-btn">know more</a>
                     </div>
                    
@@ -79,49 +79,49 @@
                                     <li>
                                         <div class="wm-box-service-wrap wm-bgcolor">
                                             <i class="wmicon-suitcase"></i>
-                                            <h6><a href="#">Business</a></h6>
+                                            <h6><a href="#">English</a></h6>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="wm-box-service-wrap wm-bgcolor">
                                             <i class="wmicon-money"></i>
-                                            <h6><a href="#">Economics</a></h6>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="wm-box-service-wrap wm-bgcolor">
-                                            <i class="wmicon-school"></i>
                                             <h6><a href="#">Math</a></h6>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="wm-box-service-wrap wm-bgcolor">
+                                            <i class="wmicon-school"></i>
+                                            <h6><a href="#">Physics</a></h6>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="wm-box-service-wrap wm-bgcolor">
                                             <i class="wmicon-science"></i>
-                                            <h6><a href="#">Science</a></h6>
+                                            <h6><a href="#">Biology</a></h6>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="wm-box-service-wrap wm-bgcolor">
                                             <i class="wmicon-computer"></i>
-                                            <h6><a href="#">Computing</a></h6>
+                                            <h6><a href="#">Chemistry</a></h6>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="wm-box-service-wrap wm-bgcolor">
                                             <i class="wmicon-technology3"></i>
-                                            <h6><a href="#">Web Design</a></h6>
+                                            <h6><a href="#">Aptitude</a></h6>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="wm-box-service-wrap wm-bgcolor">
                                             <i class="wmicon-web3"></i>
-                                            <h6><a href="#">Development</a></h6>
+                                            <h6><a href="#">Civics</a></h6>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="wm-box-service-wrap wm-bgcolor">
                                             <i class="wmicon-shape"></i>
-                                            <h6><a href="#">Biology</a></h6>
+                                            <h6><a href="#">Economics</a></h6>
                                         </div>
                                     </li>
                                 </ul>
@@ -138,16 +138,16 @@
                 <div class="container">
                     <div class="row">
                         
-                        <div class="col-md-12">
+                      <div class="col-md-12">
                             <div class="wm-fancy-title"> <h2>Popular <span>Courses</span></h2> </div>
                             <div class="wm-courses wm-courses-popular">
                                 <ul class="row">
                                     <li class="col-md-3">
                                         <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-1.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
+                                            <figure> <a href="#"><img src="extra-images/455555.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
                                                 <figcaption>
                                                     <img src="extra-images/papular-courses-thumb-1.jpg" alt="">
-                                                    <h6><a href="#">Shelly T. Forrester</a></h6>
+                                                    <h6><a href="#">Mr. Araarsaa</a></h6>
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
@@ -165,7 +165,7 @@
                                             <figure> <a href="#"><img src="extra-images/papular-courses-2.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
                                                 <figcaption>
                                                     <img src="extra-images/papular-courses-thumb-2.jpg" alt="">
-                                                    <h6><a href="#">Sam K. Harrington</a></h6>
+                                                    <h6><a href="#">Ms.Ayantu</a></h6>
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
@@ -180,10 +180,10 @@
                                     </li>
                                     <li class="col-md-3">
                                         <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-3.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
+                                            <figure> <a href="#"><img src="extra-images/sura.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
                                                 <figcaption>
                                                     <img src="extra-images/papular-courses-thumb-3.jpg" alt="">
-                                                    <h6><a href="#">Sara A. Shirley</a></h6>
+                                                    <h6><a href="#">Mr.Sura</a></h6>
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
@@ -198,14 +198,14 @@
                                     </li>
                                     <li class="col-md-3">
                                         <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-4.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
+                                            <figure> <a href="#"><img src="extra-images/fira.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
                                                 <figcaption>
                                                     <img src="extra-images/papular-courses-thumb-4.jpg" alt="">
-                                                    <h6><a href="#">Julius M. Lepage</a></h6>
+                                                    <h6><a href="#">Ms.Burtukan</a></h6>
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Phisics</a></h6>
+                                                <h6><a href="#">Physics</a></h6>
                                                 <div class="wm-courses-price"> <span>new</span> </div>
                                                 <ul>
                                                     <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 298</a></li>
@@ -217,6 +217,7 @@
                                 </ul>
                             </div>
                         </div>
+
 
                     </div>
                 </div>
@@ -234,18 +235,19 @@
                                 <ul class="row">
                                     <li class="col-md-4">
                                         <span>209</span>
-                                        <h6>of our trainees have got a prestigious job</h6>
+                                        <h6>Get International Scholarships.</h6>
                                     </li>
                                     <li class="col-md-4">
                                         <span>91%</span>
-                                        <h6>students have established successful business</h6>
+                                        <h6>Got passed UEE and get opportunity of higher education.</h6>
                                     </li>
                                     <li class="col-md-4">
                                         <span>35%</span>
-                                        <h6>have already earned their first million</h6>
+                                        <h6>Scores high point and passed with a very great destiniction</h6>
                                     </li>
                                 </ul>
                             </div>
+                        
                         </div>
                         <div class="col-md-4">
                             <div class="wm-questions-studying">
@@ -340,22 +342,22 @@
                                 </div>
                                 <div  v-else :class="['tab-pane', !contact ? 'active' : '']" id="profile">
                                     <span class="wm-contact-title">Contact Info</span>
-                                    <div class="wm-contact-service">
+                                     <div class="wm-contact-service">
                                         <ul class="row">
                                             <li class="col-md-4">
                                                 <span class="wm-service-icon"><i class="wmicon-pin"></i></span>
                                                 <h5 class="wm-color">Address</h5>
-                                                <p>195 Cooks Mine Road Espanola, NM 87532</p>
+                                                <p>Adama, Wangari market mall</p>
                                             </li>
                                             <li class="col-md-4">
                                                 <span class="wm-service-icon"><i class="wmicon-phone"></i></span>
-                                                <h5 class="wm-color">Phone & Fax</h5>
-                                                <p>+1 505-753-5656 +1 505-753-4437</p>
+                                                <h5 class="wm-color">Phone</h5>
+                                                <p>+251917817158</p>
                                             </li>
                                             <li class="col-md-4">
                                                 <span class="wm-service-icon"><i class="wmicon-letter"></i></span>
                                                 <h5 class="wm-color">E-mail</h5>
-                                                <p><a href="mailto:name@email.com">Info@university.com</a> <a href="mailto:name@email.com">support@university.com</a></p>
+                                                <p><a href="mailto:name@email.com">student@assistant.com</a> <a href="mailto:name@email.com">support@secondary.com</a></p>
                                             </li>
                                         </ul>
                                     </div>

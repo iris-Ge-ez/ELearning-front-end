@@ -411,16 +411,17 @@ methods:{
    
      this.login = !this.login
  },
-  googleTranslateElementInit() { 
-            new google.translate.TranslateElement(
-                {pageLanguage: 'en'}, 
-                'google_translate_element'
-            ); 
-        } 
+
+//   googleTranslateElementInit() { 
+//             new google.translate.TranslateElement(
+//                 {pageLanguage: 'en'}, 
+//                 'google_translate_element'
+//             ); 
+//         } 
 },
 
 mounted(){
-    this.googleTranslateElementInit()
+    // this.googleTranslateElementInit()
 }
 
 }

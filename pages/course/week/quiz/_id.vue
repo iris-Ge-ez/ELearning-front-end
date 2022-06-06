@@ -86,7 +86,7 @@
 
 
                         
-						<div class="col-md-9">
+						<div class="col-md-12">
 
                     <div class="wm-title-full">
                                 <h2 v-if="quizs.length > 0">Quiz For this Week Course</h2>
@@ -263,6 +263,7 @@ export default {
 			  console.log(error);
 		  })
 	  },
+      
       nextQuiz(){
         if(this.currentquiz < this.quizs.length-1){
           this.currentquiz++;

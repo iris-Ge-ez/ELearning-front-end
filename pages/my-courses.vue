@@ -39,10 +39,10 @@
 							<div class="wm-student-dashboard-nav">
 								<div class="wm-student-nav">
 									<figure>
-										<a href="#"><img src="extra-images/students-setting-1.jpg" alt=""></a>
+										<a href="#"><img src="extra-images/megersa.jpg" alt=""></a>
 									</figure>
 									<div class="wm-student-nav-text">
-										<h6>Kevin Nickols</h6>
+										<h6>Megersa Fekadu</h6>
 										<a href="#">update image</a>
 									</div>
 									<ul>
@@ -58,18 +58,8 @@
 												My Courses
 											</a>
 										</li>
-										<li>
-											<a href="#">
-												<i class="wmicon-favorite"></i>
-												Favorites
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="wmicon-paper"></i>
-												Statement
-											</a>
-										</li>
+										
+										
 										<li>
 											<a href="#">
 												<i class="wmicon-three"></i>
@@ -108,9 +98,9 @@
 									<ul>
 										<li class="wm-courses-start">
 											<div class="wm-statement-started-text">
-												<h6><a href="#">Archaeology and Anthropology</a></h6>
-												<span><a href="#" class="wmicon-tag"></a>$25.99</span>
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">16/05/2016 - 17/06/2016</time></span>
+												<h6><a href="#">Biology week 1</a></h6>
+											
+												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">16/05/2022 - 17/05/2022</time></span>
 											</div>
 										</li>										
 										<li>
@@ -125,9 +115,9 @@
 									<ul>
 										<li class="wm-courses-start">
 											<div class="wm-statement-started-text">
-												<h6><a href="#">Biochemistry (Molecular and Cellular)</a></h6>
-												<span><a href="#" class="wmicon-tag"></a>$34.00</span>
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">9/04/2016 - 10/05/2016</time></span>
+												<h6><a href="#">Chemistry week 1</a></h6>
+												
+												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">9/04/2022 - 10/05/2022</time></span>
 											</div>
 										</li>
 										<li>
@@ -142,9 +132,9 @@
 									<ul>
 										<li class="wm-courses-start">
 											<div class="wm-statement-started-text">
-												<h6><a href="#">Mathematics and Statistics</a></h6>
-												<span><a href="#" class="wmicon-tag"></a>$30.50</span>
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">20/06/2016 - 24/07/2016</time></span>
+												<h6><a href="#">Mathematics week 2</a></h6>
+											
+												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">20/06/2022 - 24/07/2022</time></span>
 											</div>
 										</li>
 										<li>
@@ -159,9 +149,9 @@
 									<ul>
 										<li class="wm-courses-start">
 											<div class="wm-statement-started-text">
-												<h6><a href="#">Materials Science</a></h6>
-												<span><a href="#" class="wmicon-tag"></a>Free</span>
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">5/04/2016 - 11/05/2016</time></span>
+												<h6><a href="#">Physics week 1</a></h6>
+												
+												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">5/04/2022 - 11/05/2022</time></span>
 											</div>
 										</li>
 										<li>
@@ -176,9 +166,9 @@
 									<ul>
 										<li class="wm-courses-start">
 											<div class="wm-statement-started-text">
-												<h6><a href="#">Modern Languages and Linguistics</a></h6>
-												<span><a href="#" class="wmicon-tag"></a>$34.00</span>
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">9/04/2016 - 10/05/2016</time></span>
+												<h6><a href="#">Civics and Ethical Education week 1</a></h6>
+												
+												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">9/04/2022 - 10/05/2022</time></span>
 											</div>
 										</li>										
 										<li>
@@ -193,9 +183,9 @@
 									<ul>
 										<li class="wm-courses-start">
 											<div class="wm-statement-started-text">
-												<h6><a href="#">Computer Science and Philosophy</a></h6>
-												<span><a href="#" class="wmicon-tag"></a>$30.50</span>
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">20/06/2016 - 24/07/2016</time></span>
+												<h6><a href="#">English week 1</a></h6>
+											
+												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">20/06/2022- 24/07/2022</time></span>
 											</div>
 										</li>
 										<li>
@@ -210,9 +200,9 @@
 									<ul>
 										<li class="wm-courses-start">
 											<div class="wm-statement-started-text">
-												<h6><a href="#">Medicines</a></h6>
-												<span><a href="#" class="wmicon-tag"></a>Free</span>
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">5/04/2016 - 11/05/2016</time></span>		
+												<h6><a href="#">Aptitude week 1</a></h6>
+										
+												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">5/04/2022 - 11/05/2022</time></span>		
 											</div>
 										</li>
 										<li>
