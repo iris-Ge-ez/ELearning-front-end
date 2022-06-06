@@ -135,7 +135,7 @@
                             </div>
                             <div class="wm-courses wm-courses-popular">
                                 <ul class="row">
-                                  <nuxt-link v-for="next in weeks" :key="next.id" :to="`/course/week/${next.id}`">
+                                  <nuxt-link v-for="next in weeks" :key="next.id" :to="`/course/${course_id}/${next.id}`">
                                     <li class="col-md-4">
                                         <div class="wm-courses-popular-wrap">
 
@@ -232,6 +232,7 @@ export default {
        quizs:[],
        currentquiz:0,
        showsoln:false,
+       course_id:this.$route.params.week
       }
   },
   methods:{
@@ -241,7 +242,10 @@ export default {
 		  const url = process.env.baseUrl+'/week/'
 
 		  axios.get(url).then(response => {
-			  this.weeks = response.data;
+			  this.weeks = response.data.filter(week => {
+             return week.course == this.$route.params.week && week.id != this.$route.params.id
+        
+      });;
 			  this.loading = false;
 		  }).catch(error => {
 			  console.log(error);
@@ -254,10 +258,7 @@ export default {
 		  const url = process.env.baseUrl+'/quiz/'
 
 		  axios.get(url).then(response => {
-			  this.quizs = response.data.filter(quiz => {
-             return quiz.week == this.$route.params.id
-        
-      });
+			  this.quizs = response.data
 			  this.loading = false;
 		  }).catch(error => {
 			  console.log(error);

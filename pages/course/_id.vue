@@ -162,7 +162,7 @@
                             </div>
                             <div class="wm-courses wm-courses-popular">
                                 <ul class="row">
-                                 <nuxt-link v-for="week in thisCourseWeeks" :key="week.id"  :to="`/course/week/${week.id}`"> 
+                                 <nuxt-link v-for="week in thisCourseWeeks" :key="week.id"  :to="`/course/${course_id}/${week.id}`"> 
                                     <li  class="col-md-4">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img :src="week.thumbnail" alt="">
@@ -259,6 +259,7 @@ export default {
            loading: true,
 		   course:[],
 		   weeks:[],
+		   course_id:this.$route.params.id
 
 	  }
 
@@ -286,7 +287,7 @@ export default {
 		  const url = process.env.baseUrl+'/week/'
 
 		  axios.get(url).then(response => {
-			  this.weeks = response.data;
+			  this.weeks =  response.data;
 			  this.loading = false;
 		  }).catch(error => {
 			  console.log(error);

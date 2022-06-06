@@ -142,37 +142,19 @@
                                 </div>
                             </div>
 
-
-                         <div class="wm-promo-box wm-typography-element">
+          <div  v-if="loading == false">
+                         <div v-for="room in chatrooms" :key="room.id" class="wm-promo-box wm-typography-element">
 								<div class="wm-promo-box-text">
-									<h2> Biology </h2>
+									<h2> {{room.name}} </h2>
 									
-									<span>Grade 11</span>																	
+									<span>{{room.description}}</span>																	
 								</div>
-								<a class="read-more" href="#">Join Chatroom</a>
+								<a class="read-more" :href="`${chat_url}${room.name}/`">Join Chatroom</a>
 							</div>
 
-                            <div class="wm-promo-box wm-typography-element">
-								<div class="wm-promo-box-text">
-									<h2> Chemistry</h2>
-									
-									<span>Grade 12</span>																	
-								</div>
-								<a class="read-more" href="#">Join Chatroom</a>
-							</div>
+                           </div>
 
-
-                            <div class="wm-pagination">
-                                <ul>
-                                    <li><a href="#" aria-label="Previous"> <i class="wmicon-arrows4"></i> Previous</a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li>...</li>
-                                    <li><a href="#">18</a></li>
-                                    <li><a href="#" aria-label="Next"> <i class="wmicon-arrows4"></i> Next</a></li>
-                                </ul>
-                            </div>
+                           
                         </div>
 
                     </div>
@@ -187,8 +169,41 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
- layout:"MainLayout"
+ layout:"MainLayout",
+
+
+ data(){
+     return{
+         chatrooms:[],
+         loading:true,
+         chat_url:process.env.Chat
+     }
+ },
+
+
+ methods:{
+
+     FetchChatrooms(){
+         const url = process.env.Url + "/chat-api/chat-group/"
+
+          axios.get(url).then(response => {
+			  this.chatrooms = response.data;
+			  this.loading = false;
+		  }).catch(error => {
+			  console.log(error);
+		  })
+
+     }
+ },
+
+
+ mounted(){
+     this.FetchChatrooms()
+ }
 }
 </script>
 

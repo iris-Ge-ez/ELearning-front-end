@@ -265,33 +265,32 @@
                 <div v-else>
 
                     <span class="wm-color">create Your Instarctor Account today</span>
-                <form >
+                <form  @submit.prevent="RegisterInstractor">
                         <ul>
                         <li> <input type="text" v-model="username2" required placeholder="Your Username" onblur="if(this.value == '') { this.value ='Your Username'; }" onfocus="if(this.value =='Your Username') { this.value = ''; }"> </li>
-                        <li> <input type="text" v-model="first_name2" required placeholder="Your Firstname"> </li>
-                        <li> <input type="text" v-model="last_name2"  required placeholder="Your Lastname"> </li>
+                        <li> <input type="text" v-model="first_name2" required placeholder="Firstname"> </li>
+                        <li> <input type="text" v-model="last_name2"  required placeholder=" Lastname"> </li>
                         <select style="margin-bottom:5px" v-model="sex2">
 
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
 
-                        <select style="margin-bottom:5px" v-model="field_of_study">
+                       <div v-if="loading == false">
+                            <select style="margin-bottom:5px" v-model="field_of_study">
 
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option v-for="std in study" :key="std.id" :value="std.id">{{std.name}}</option>
                         </select>
+                       </div>
 
                         <li> <input type="text" v-model="phone2" required placeholder="Phone Number"> </li>
                         <li> <textarea rows="10" cols="40" v-model="description" required placeholder="About You"> </textarea> </li>
-                        <li style="background-color:#f2f2f2;padding:5px;"> Profile Picture <input @change="SaveProfile" type="file" placeholder="ProfilePicture"> </li>
+                        <li style="background-color:#f2f2f2;padding:5px;"> Profile Picture <input @change="SaveProfile2" type="file" placeholder="ProfilePicture"> </li>
+                        <div v-if="loading == false">
                          <select v-model="academic_completion_university" >
 
-                            <option value="Lower School">Lower School</option>
-                            <option value="Elementery School">Elementery School</option>
-                            <option value="High School">High School</option>
-                            <option value="Preparatory School">Preparatory School</option>
-                        </select>
+                            <option v-for="un in university" :key="un.id" :value="un.id">{{un.name}}</option>
+                        </select></div>
 
                         <li> <input type="text" v-model="email2" required placeholder="Your E-mail" onblur="if(this.value == '') { this.value ='Your E-mail'; }" onfocus="if(this.value =='Your E-mail') { this.value = ''; }"> </li>
                         <li> <input type="password" v-model="password2" required placeholder="password" onblur="if(this.value == '') { this.value ='password'; }" onfocus="if(this.value =='password') { this.value = ''; }"> </li>
@@ -331,6 +330,10 @@ export default {
          login:true,
          student:true,
          creating:false,
+         loading:true,
+
+         study:[],
+         university:[],
 
         //  Student Info 
 
@@ -364,20 +367,47 @@ export default {
 
 
 methods:{
+
+     FetchFieldOfStudy(){
+         const url = process.env.Url + "/auser-api/field-of-study/"
+
+          axios.get(url).then(response => {
+			  this.study = response.data;
+			  this.loading = false;
+		  }).catch(error => {
+			  console.log(error);
+		  })
+
+     },
+      FetchUniversity(){
+         const url = process.env.Url + "/auser-api/university/"
+
+          axios.get(url).then(response => {
+			  this.university = response.data;
+			  this.loading = false;
+		  }).catch(error => {
+			  console.log(error);
+		  })
+
+     },
    
    SaveProfile(e){
            
         this.profile_picture = e.target.files[0];
     },
+   SaveProfile2(e){
+           
+        this.profile_picture2 = e.target.files[0];
+    },
    
    RegisterUser(){
        this.creating = true
             const form = new FormData();
-            const url = process.env.Url+"/student-registration/" 
+            const url = process.env.Url+"/auser-api/student/" 
 
             form.append('username',this.username);
-            form.append('first_name',this.first_name);
-            form.append('last_name',this.last_name);
+            form.append('first_name',this.first_name2);
+            form.append('last_name',this.last_name2);
             form.append('sex',this.sex);
             form.append('phone',this.phone);
             form.append('password',this.password);
@@ -387,6 +417,39 @@ methods:{
 
 
             form.append('profile_picture',this.profile_picture)
+
+            axios.post(url,form).then(response=>{
+
+                console.log(response.data)
+            
+
+                    alert("Registration Successful")
+                     this.creating = false
+                  
+                }).catch(error=>{
+                    console.log(error.response.data)
+                     this.creating = false
+                })
+   },
+   RegisterInstractor(){
+       this.creating = true
+            const form = new FormData();
+            const url = process.env.Url+"/auser-api/instructor/" 
+
+            form.append('username',this.username2);
+            form.append('first_name',this.first_name2);
+            form.append('last_name',this.last_name2);
+            form.append('sex',this.sex2);
+            form.append('phone',this.phone2);
+            form.append('password',this.password2);
+            form.append('email',this.email2);
+            form.append('description',this.description);
+            form.append('field_of_study',this.field_of_study);
+            form.append('academic_completion_university',this.academic_completion_university);
+
+
+
+            form.append('profile_picture',this.profile_picture2)
 
             axios.post(url,form).then(response=>{
 
@@ -422,6 +485,8 @@ methods:{
 
 mounted(){
     // this.googleTranslateElementInit()
+    this.FetchFieldOfStudy()
+    this.FetchUniversity()
 }
 
 }

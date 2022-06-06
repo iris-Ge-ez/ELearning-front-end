@@ -124,7 +124,7 @@
 								<div class="wm-ourcourses-right">
 									<!-- <a class="wm-previous-icon" href="#"><i class="fa fa-angle-left" ></i>previous Week</a>
 									<a class="wm-Next-icon" href="#">Next Week<i class="fa fa-angle-right" ></i></a> -->
-                  <nuxt-link :to="`/course/week/quiz/${week.id}`"><a href="#" class="wm-previous-icon">Take Quiz For this Week <i class="fa fa-angle-right"></i></a></nuxt-link>
+                  <nuxt-link :to="`/course/${week_id}/quiz/${week.id}`"><a href="#" class="wm-previous-icon">Take Quiz For this Week <i class="fa fa-angle-right"></i></a></nuxt-link>
                   	<a class="wm-more-details" style="margin-left:10px;height:45px" :href="week.book">Download Pdf</a>
 								</div>
 							</div>
@@ -320,7 +320,7 @@
                             </div>
                             <div class="wm-courses wm-courses-popular">
                                 <ul class="row">
-                                    <nuxt-link v-for="next in nextWeeks" :key="next.id" :to="`/course/week/${next.id}`">
+                                    <nuxt-link v-for="next in nextWeeks" :key="next.id" :to="`/course/${week_id}/${next.id}`">
                                     <li class="col-md-4">
                                         <div class="wm-courses-popular-wrap">
 
@@ -497,6 +497,8 @@ data(){
     week:[],
     loading:true,
     nextWeeks:[],
+	week_id:this.$route.params.week,
+	
 	}
 },
   head(){
@@ -571,7 +573,7 @@ data(){
 		  axios.get(url).then(response => {
 
       this.nextWeeks = response.data.filter(week => {
-             return week.id!= this.$route.params.id
+             return week.id!= this.$route.params.id && week.course == this.$route.params.week
         
       });
 			  this.loading = false;
