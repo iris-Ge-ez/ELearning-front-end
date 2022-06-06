@@ -258,7 +258,10 @@ export default {
 		  const url = process.env.baseUrl+'/quiz/'
 
 		  axios.get(url).then(response => {
-			  this.quizs = response.data
+			  this.quizs = response.data.filter(quiz => {
+             return quiz.week == this.$route.params.id 
+        
+      });
 			  this.loading = false;
 		  }).catch(error => {
 			  console.log(error);
