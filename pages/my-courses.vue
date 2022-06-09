@@ -231,6 +231,7 @@
 
 <script>
 export default {
+	 middleware:["check-auth","auth"],
   layout:"MainLayout"
 }
 </script>

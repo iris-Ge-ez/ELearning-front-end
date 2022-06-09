@@ -150,6 +150,7 @@
 <script>
 import axios from 'axios'
 export default {
+     middleware:["check-auth","auth"],
     layout: "MainLayout",
 
     data() {

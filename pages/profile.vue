@@ -34,18 +34,17 @@
 							 <div class="wm-student-dashboard-nav">
 								 <div class="wm-student-nav">
 									<figure>
-										<a href="#"><img src="extra-images/megersa.jpg" alt=""></a>
+										<a href="#"><img :src="user_data.profile_picture" alt=""></a>
 									</figure>
 									<div class="wm-student-nav-text">
-										<h6>Megersa Fekadu</h6>
-										<a href="#">update image</a>
+										<h6>{{user_data.first_name}} {{user_data.last_name}}</h6>
 									</div>
 									<ul>
 										
 										<li>
 											<a href="#">
 												<i class="wmicon-book"></i>
-												My Courses
+												{{user_data.username}}
 											</a>
 										</li>
 									
@@ -55,208 +54,55 @@
 							</div>							
 						</aside>
 						<div class="col-md-8">
-							<div class="wm-student-profile-info">
-								<div class="wm-student-dashboard-profile">
-									<div class="wm-plane-title">
-										<h2>About Me</h2>									
-									</div>
-									<ul class="row">
-										<li class="col-md-4">
-											<div class="wm-student-profile">
-												<a class=wm-circle-icon href="#"><i class="wmicon-technology4"></i></a>
-												<div class="wm-student-profile-text">
-													<span>Phone:</span>
-													<a href="#">(012) 345-6789</a>
-												</div>
-											</div>
-										</li>
-										<li class="col-md-4">
-											<div class="wm-student-profile">
-												<a class=wm-circle-icon href="#"><i class="wmicon-web2"></i></a>
-												<div class="wm-student-profile-text">
-													<span>Email:</span>
-													<a href="#">kevin@student.com</a>
-												</div>
-											</div>
-										</li>
-										<li class="col-md-4">
-											<div class="wm-student-profile">
-												<a class=wm-circle-icon href="#"><i class="fa fa-graduation-cap"></i></a>
-												<div class="wm-student-profile-text">
-													<span>Tutor:</span>
-													<a href="#">Janet H. Kamerons</a>
-												</div>
-											</div>
-										</li>
-									</ul>
-									<p>Becoming a student requires more than a test score. To “be student” requires persistence. And passion. And a desire to give back. It doesn’t matter 	whether you’re the first in your family to attend college or you’re the latest in a long tradition of educational excellence: You stand up and you stand out.</p>								
-								</div>
-								<div class="wm-profile-info">
-									<div class="wm-title-full">
-										<h5>More Detail Information</h5>
-									</div>
-									<div class="wm-article">
-										<ul>
-											<li class="wm-profile-info-right">
-												<span>Public on campus</span>
-											</li>
-										</ul>
-									</div>
-									<div class="wm-article">
-										<ul>
-											<li class="wm-profile-start">
-												<div class="wm-profile-detail-info">
-													<h6><a href="#">Volunteer work with non-profits</a></h6>
-													<span>No details have been entered.</span>
-												</div>
-											</li>
-											<li><a href="#" class="wm-edit-icon"><i class="wmicon-tool3"></i>Edit</a></li>
-											<li>
-												<div class="wm-select-checkbox">
-													<input id="c22" type="checkbox" name="ca">
-													<label for="c22">
-														<span></span>
-													</label>
-												</div>
-											</li>
-										</ul>
-										<form class="wm-profile-info-search">
-											<input type="text" onfocus="if(this.value =='Enter text here ...') { this.value = ''; }" onblur="if(this.value == '') { this.value ='Enter text here ...'; }" value="Enter text here ...">
-										</form>
-									</div>
-									<div class="wm-article">
-										<ul>
-											<li class="wm-profile-start">
-												<div class="wm-profile-detail-info">
-													<h6><a href="#">Knowledge and skills</a></h6>
-													<span>No details have been entered.</span>
-												</div>
-											</li>
-											<li><a href="#" class="wm-edit-icon"><i class="wmicon-tool3"></i>Edit</a></li>
-											<li>
-												<div class="wm-select-checkbox">
-													<input id="c23" type="checkbox" name="ca">
-													<label for="c23">
-														<span></span>
-													</label>
-												</div>
-											</li>
-										</ul>
-									</div>
-									<div class="wm-article">
-										<ul>
-											<li class="wm-profile-start">
-												<div class="wm-profile-detail-info">
-													<h6><a href="#">Languages</a></h6>
-													<span>English (B2); Spanish (native)</span>
-												</div>
-											</li>
-											<li><a href="#" class="wm-edit-icon"><i class="wmicon-tool3"></i>Edit</a></li>
-											<li>
-												<div class="wm-select-checkbox">
-													<input id="c24" type="checkbox" name="ca">
-													<label for="c24">
-														<span></span>
-													</label>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>									
-						</div>
 
-                        <div class="col-md-12">
-							<div class="wm-student-settings-info">							
+							{{user_data}}
+									<div class="wm-student-settings-info">							
 								<div class="wm-student-dashboard-settings">
 									<div class="wm-plane-title">
 										<h2>Profile Settings</h2>
 									</div>
-									<form>
+									<form @submit.prevent="RegisterUser">
 										<ul>
-											<li><input type="text" value="First Name" onblur="if(this.value == '') { this.value ='First Name'; }" onfocus="if(this.value =='First Name') { this.value = ''; }"></li>
-											<li><input type="text" value="Last Name" onblur="if(this.value == '') { this.value ='Last Name'; }" onfocus="if(this.value =='Last Name') { this.value = ''; }"></li>
-											<li><input type="text" value="Phone Number" onblur="if(this.value == '') { this.value ='Phone Number'; }" onfocus="if(this.value =='Phone Number') { this.value = ''; }"></li>
-											<li><input type="text" value="E-mail Address" onblur="if(this.value == '') { this.value ='E-mail Address'; }" onfocus="if(this.value =='E-mail Address') { this.value = ''; }"></li>
-											<li class="wm-student-select">
-												<div class="wm-select-two">
-													<select>
-														<option>Day of Birth </option>
-														<option>Day of Birth 1 </option>
-														<option>Day of Birth 2 </option>
-														<option>Day of Birth 3 </option>
-													</select>
-												</div>
-											</li>
-											<li class="wm-student-select">
-												<div class="wm-select-two">
-													<select>
-														<option>Month of Birth </option>
-														<option>Month of Birth 1 </option>
-														<option>Month of Birth 2 </option>
-														<option>Month of Birth 3 </option>
-													</select>
-												</div>
-											</li>
-											<li class="wm-student-select">
-												<div class="wm-select-two">
-													<select>
-														<option>Year of Birth </option>
-														<option>Year of Birth 1 </option>
-														<option>Year of Birth 2 </option>
-														<option>Year of Birth 3 </option>
-													</select>
-												</div>
-											</li>
+											<li><input type="text" v-model="first_name" :placeholder="user_data.first_name"></li>
+											<li><input type="text" v-model="last_name" :placeholder="user_data.last_name"></li>
+											<li><input type="text" v-model="phone" :placeholder="user_data.phone"></li>
+											<li><input type="text" v-model="email" :placeholder="user_data.email"></li>
+											<li><input type="text" v-model="username" :placeholder="user_data.username"></li>
+											<li><input type="text" v-model="password" :placeholder="user_data.password"></li>
+											<li style="background-color:#f2f2f2;padding:5px;"> Profile Picture <input @change="SaveProfile" type="file" placeholder="ProfilePicture"> </li>
+
+											 <li>
+												  <select v-model=" academic_level" >
+
+                            <option value="Lower School">Lower School</option>
+                            <option value="Elementery School">Elementery School</option>
+                            <option value="High School">High School</option>
+                            <option value="Preparatory School">Preparatory School</option>
+                        </select>
+											 </li>
+											
+										
+											
 											<li>
-												<div class="wm-select-two">
-													<select>
-														<option>Country </option>
-														<option>Country 1 </option>
-														<option>Country 2 </option>
-														<option>Country 3 </option>
-													</select>
-												</div>
-											</li>
-											<li>
-												<div class="wm-select-two">
-													<select>
-														<option>City </option>
-														<option>City 1 </option>
-														<option>City 2 </option>
-														<option>City 3 </option>
-													</select>
-												</div>
+												 <select style="margin-bottom:5px" v-model="sex">
+
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
 											</li>																			 
 		                                </ul>
+
+                        <li> <input type="submit" :value="creating ? 'Updateing ...' :'Update Profile'"> </li>
+
 									</form>
 								</div>
-								<div class="wm-student-dashboard-form">
-									<div class="wm-full-title ">
-										<h2>Update Password</h2>
-									</div>
-									<form>
-										<ul>
-											<li><input type="text" value="Old Password" onblur="if(this.value == '') { this.value ='Old Password'; }" onfocus="if(this.value =='Old Password') { this.value = ''; }"></li>
-											<li><input type="text" value="New Password" onblur="if(this.value == '') { this.value ='New Password'; }" onfocus="if(this.value =='New Password') { this.value = ''; }"></li>
-											<li><input type="text" value="Your Name" onblur="if(this.value == '') { this.value ='Your Name'; }" onfocus="if(this.value =='Your Name') { this.value = ''; }"></li>																			 
-		                                </ul>
-									</form>
-								</div>
-								<div class="wm-student-dashboard-form wm-student-dashboard">
-									<div class="wm-full-title ">
-										<h2>Social Media</h2>
-									</div>
-									<form>
-										<ul>
-											<li class="wm-form-icon"><a class="fa fa-facebook wm-icon" href="#"></a><input type="text" value="kevinnikols" onblur="if(this.value == '') { this.value ='kevinnikols'; }" onfocus="if(this.value =='kevinnikols') { this.value = ''; }"></li>
-											<li class="wm-form-icon"><a class="fa fa-twitter wm-icon" href="#"></a><input type="text" value="@kevinnikols" onblur="if(this.value == '') { this.value ='@kevinnikols'; }" onfocus="if(this.value =='@kevinnikols') { this.value = ''; }"></li>
-											<li class="wm-form-icon"><a class="fa fa-youtube wm-icon" href="#"></a><input type="text" value="kevinnikols" onblur="if(this.value == '') { this.value ='kevinnikols'; }" onfocus="if(this.value =='kevinnikols') { this.value = ''; }"></li>
-											<li><input type="submit" value="update changes"></li>
-		                                </ul>
-									</form>
-								</div>
-							</div>
+								
+							
+							</div>						
+						</div>
+
+                        <div class="col-md-12">
+							
 						</div>
 					</div>
 				</div>
@@ -272,8 +118,94 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  layout:"MainLayout"
+	 middleware:["check-auth","auth"],
+  layout:"MainLayout",
+
+  data(){
+	  return{
+
+
+		  user_data:[],
+		  loading:true,
+
+
+		//   user update
+
+		sex:"",
+        phone:"",
+        profile_picture:"",
+        academic_level:"",
+        username:"",
+        first_name:"",
+        last_name:"",
+        email:"",
+        password:"",
+	    creating:false,
+
+	  }
+  },
+
+  methods:{
+	  SaveProfile(e){
+           
+        this.profile_picture = e.target.files[0];
+    },
+
+
+RegisterUser(){
+       this.creating = true
+            const form = new FormData();
+            const url = process.env.Url + `/auser-api/student/${this.$store.state.user_id}/`
+            form.append('username',this.username ? this.username : this.user_data.username);
+            form.append('first_name',this.first_name);
+            form.append('last_name',this.last_name);
+            form.append('sex',this.sex);
+            form.append('phone',this.phone);
+            form.append('password',this.password);
+            form.append('email',this.email);
+            form.append('academic_level',this.academic_level);
+
+
+
+            form.append('profile_picture',this.profile_picture)
+
+            axios.put(url,form).then(response=>{
+
+                console.log(response.data)
+            
+
+                    alert("Update Successful");
+					this.user_data = []
+					this.user_data = response.data
+                     this.creating = false
+                  
+                }).catch(error=>{
+                    console.log(error.response.data)
+                     this.creating = false
+                })
+   },
+	   FetchUserData(){
+         const url = process.env.Url + `/auser-api/student/${this.$store.state.user_id}/`
+
+          axios.get(url).then(response => {
+			  this.user_data = response.data;
+			  this.loading = false;
+		  }).catch(error => {
+			  console.log(error);
+		  })
+
+     },
+
+
+	 
+  },
+
+  mounted(){
+
+	  this.FetchUserData()
+  }
 }
 </script>
 

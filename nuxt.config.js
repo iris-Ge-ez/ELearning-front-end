@@ -81,10 +81,11 @@ export default {
   env: {
     // baseUrl: process.env.BASE_URL || 'http://localhost:8000/core-api',
     // Url: process.env.BASE_URL || 'http://localhost:8000',
+    // Chat:process.env.BASE_URL || 'http://localhost:8000/chat/'
     
-    baseUrl: process.env.BASE_URL || 'http://192.168.43.20:8888/core-api',
-    Url: process.env.BASE_URL || 'http://192.168.43.20:8888',
-    Chat:process.env.BASE_URL || 'http://192.168.43.20:8888/chat/'
+    baseUrl: process.env.BASE_URL || 'http://192.168.0.3:8000/core-api',
+    Url: process.env.BASE_URL || 'http://192.168.0.3:8000',
+    Chat:process.env.BASE_URL || 'http://192.168.0.3:8000/chat/'
     
   }
 }

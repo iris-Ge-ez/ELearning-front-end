@@ -145,7 +145,7 @@
                             <nuxt-link v-for="course in  filterd_courses" :key="course.id" :to="`/course/${course.id}`">
                                     <li class="col-md-12">
                                         <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img :src="course.thumbnail" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
+                                            <figure> <a href="#"><img :src="course.thumbnail" alt="" style="max-height:250px"> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
                                                 <figcaption>    
                                                     <img src="extra-images/papular-courses-thumb-1.jpg" alt="">
                                                     <h6><a href="#"></a></h6>
@@ -202,6 +202,7 @@
 import axios from 'axios'
 
 export default {
+  middleware:["check-auth","auth"],
  layout:"MainLayout",
  data(){
 
@@ -219,6 +220,7 @@ export default {
     
  },
     methods:{
+      
         getCourses(){
             
             this.loading = true;

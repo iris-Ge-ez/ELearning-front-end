@@ -164,7 +164,7 @@
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/papular-courses-2.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
                                                 <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-2.jpg" alt="">
+                                                    <img src="extra-images/papular-courses-thumb-1.jpg" alt="">
                                                     <h6><a href="#">Ms.Ayantu</a></h6>
                                                 </figcaption>
                                             </figure>
@@ -182,7 +182,7 @@
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/sura.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
                                                 <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-3.jpg" alt="">
+                                                    <img src="extra-images/papular-courses-thumb-1.jpg" alt="">
                                                     <h6><a href="#">Mr.Sura</a></h6>
                                                 </figcaption>
                                             </figure>
@@ -200,7 +200,7 @@
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img src="extra-images/fira.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
                                                 <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-4.jpg" alt="">
+                                                    <img src="extra-images/papular-courses-thumb-1.jpg" alt="">
                                                     <h6><a href="#">Ms.Burtukan</a></h6>
                                                 </figcaption>
                                             </figure>

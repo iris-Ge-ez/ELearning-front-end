@@ -10,7 +10,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="wm-language"> <ul> <li><a href="#">English</a></li>  <li> <div id="google_translate_element" ></div> </li></ul> </div>
+                            <div class="wm-language"> <ul> <li><a href="#">English</a></li> 
+                             <li> <div id="google_translate_element" ></div> </li></ul> </div>
                             <ul class="wm-stripinfo">
                                 <li><i class="wmicon-location"></i> Adama Ethiopia</li>
                                
@@ -18,11 +19,14 @@
                                 <li><i class="wmicon-clock2"></i> Mon - fri: 7:00am - 6:00pm</li>
                             </ul>
                             <ul class="wm-adminuser-section">
-                                <li>
+                                <li v-if="this.$store.getters.isAuthenticated">
+                                    <a href="#" data-toggle="modal" @click="Logout">Logout</a>
+                                </li>
+                                <li v-else>
                                     <a href="#" data-toggle="modal" data-target="#ModalLogin">login</a>
                                 </li>
                                 <li>
-                                    <a href="#">Contact</a>
+                                    <a href="#" data-toggle="modal" data-target="#ModalLogin">Contact</a>
                                 </li>
                                 <li>
                                     <a href="#" class="wm-search-btn" data-toggle="modal" data-target="#ModalSearch"><i class="wmicon-search"></i></a>
@@ -55,30 +59,30 @@
                                     <li class="active"><nuxt-link to="/"><a href="#">Home</a></nuxt-link></li>
                                    
                                     <li>
-                                        <nuxt-link to="/course-list"><a href="#">courses</a></nuxt-link>
+                                        <nuxt-link to="/course-list"><a href="#" data-toggle="modal" data-target="#ModalLogin">courses</a></nuxt-link>
                                         
                                     </li>
 
                                     <li>
-                                        <nuxt-link to="/exam-sheets"><a href="#">Exam Sheets</a></nuxt-link>
+                                        <nuxt-link to="/exam-sheets"><a href="#" data-toggle="modal" data-target="#ModalLogin">Exam Sheets</a></nuxt-link>
                                         
                                     </li>
-                           <li class="active">
-                               <nuxt-link to="/chatrooms"><a href="#">Chatrooms</a></nuxt-link>
+                           <li class="active" v-if="this.$store.getters.isAuthenticated">
+                               <nuxt-link to="/chatrooms"><a href="#" data-toggle="modal" data-target="#ModalLogin">Chatrooms</a></nuxt-link>
                            
                            <ul class="wm-dropdown-menu">
-                                            <li><nuxt-link to="/chatrooms"><a href="#">Grade 11</a></nuxt-link></li>
-                                            <li><nuxt-link to="/chatrooms"><a href="#">Grade 12</a></nuxt-link></li>
+                                            <li><nuxt-link to="/chatrooms"><a href="#" data-toggle="modal" data-target="#ModalLogin">Grade 11</a></nuxt-link></li>
+                                            <li><nuxt-link to="/chatrooms"><a href="#" data-toggle="modal" data-target="#ModalLogin">Grade 12</a></nuxt-link></li>
                                           
                                         </ul>
                            </li>
 
                                    
-                                   <li ><a href="#">Dashboard</a>
+                                   <li v-if="this.$store.getters.isAuthenticated" ><a href="#">Dashboard</a>
                                         <ul class="wm-dropdown-menu">
                                        
-                                            <li><nuxt-link to="/my-courses"><a href="#">My Courses</a></nuxt-link></li>
-                                            <li><nuxt-link to="/profile" ><a href="#">Profile </a></nuxt-link></li>
+                                            <li><nuxt-link to="/my-courses"><a href="#" data-toggle="modal" data-target="#ModalLogin">My Courses</a></nuxt-link></li>
+                                            <li><nuxt-link to="/profile" ><a href="#" data-toggle="modal" data-target="#ModalLogin">Profile </a></nuxt-link></li>
                                           
                                         </ul>
                                     </li> 
@@ -211,19 +215,21 @@
 		<!--// Footer \\-->
 
         <!-- ModalLogin Box -->
-    <div class="modal fade" id="ModalLogin" tabindex="-1" role="dialog">
+    <div v-if="!this.$store.getters.isAuthenticated" class="modal" :style="this.$store.getters.isAuthenticated ? 'position:relative !important':''" id="ModalLogin" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body">
             
             <div v-if ="login" class="wm-modallogin-form wm-login-popup">
                 <span class="wm-color">Login to Your Account</span>
-                <form>
+                <span style="color:red;font-size:10px" v-if="this.$store.state.error"> {{this.$store.state.error}} </span>
+                <form @submit.prevent="Login">
                     <ul>
-                        <li> <input type="text" value="Your Username" onblur="if(this.value == '') { this.value ='Your Username'; }" onfocus="if(this.value =='Your Username') { this.value = ''; }"> </li>
-                        <li> <input type="password" value="password" onblur="if(this.value == '') { this.value ='password'; }" onfocus="if(this.value =='password') { this.value = ''; }"> </li>
-                        <li> <a href="#" class="wm-forgot-btn">Forgot Password?</a> </li>
-                        <li> <input type="submit" value="Sign In"> </li>
+                        <li> <input v-model="lemail" type="text"  placeholder="Your Email" required > </li>
+                        <li> <input v-model="lpassword" type="password" placeholder="Your password" value="password" > </li>
+                        <li v-if="this.$store.state.isloggin == true"> <input type="submit" value="Logging In"> </li>
+
+                        <li v-else> <input type="submit" value="Sign In"> </li>
                     </ul>
                 </form>
                
@@ -311,6 +317,7 @@
       <div class="clearfix"></div>
       </div>
     </div>
+    <div v-else></div>
     <!-- ModalLogin Box -->
 
 </div>
@@ -362,11 +369,30 @@ export default {
         field_of_study:"",
         description:"",
 
+
+
+        // LOgin Parameters
+
+        lemail:"",
+        lpassword:"",
+
      }
  },
 
 
 methods:{
+    Logout(){
+        this.$store.dispatch("logout")
+    },
+
+   Login(){
+       this.$store.dispatch("authenticateUser", {
+        
+        email: this.lemail,
+        password: this.lpassword
+      })
+   }
+    ,
 
      FetchFieldOfStudy(){
          const url = process.env.Url + "/auser-api/field-of-study/"

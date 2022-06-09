@@ -75,7 +75,7 @@
 						<div class="col-md-9">
 							<div class="wm-blog-single wm-courses">
 								<figure class="wm-detail-thumb">
-									<img :src="course.thumbnail" alt="">
+									<img :src="course.thumbnail" alt="" style="max-height:300px;width:850px">
 								</figure>
 								<div class="wm-blog-author wm-ourcourses">
 									<div class="wm-blogauthor-left">
@@ -208,6 +208,7 @@
 import axios from 'axios'
 
 export default {
+	 middleware:["check-auth","auth"],
   layout:"MainLayout",
 
 
