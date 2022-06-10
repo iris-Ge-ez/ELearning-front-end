@@ -37,7 +37,8 @@
 								<div class="wm-widget-heading">
 									<h4>{{course.name}} </h4>
 								</div>
-							<a href="#">enroll this course</a>
+						<a href="#" v-if="enrolment" >You already enrolled this course</a>
+							<a href="#" @click="EnrollCourse" v-else >enroll this course</a>
 								<!-- <ul>
 									<li><a href="#"><i class=" wmicon-social7"></i>234 Students</a></li>
 									<li><a href="#"><i class=" wmicon-clock2"></i><time datetime="2017-02-14">Duration: 2hr30mins</time></a></li>
@@ -260,13 +261,44 @@ export default {
            loading: true,
 		   course:[],
 		   weeks:[],
-		   course_id:this.$route.params.id
+		   course_id:this.$route.params.id,
+		   enrolment:[],
 
 	  }
 
   }
   ,
   methods:{
+
+     EnrollCourse(){
+		   const url = process.env.baseUrl+'/enroll/'
+
+		   const data ={
+			   student:this.$store.state.user_id,
+			   course:this.course_id
+		   }
+
+		  axios.post(url,data).then(response => {
+			  	console.log(response.data)
+				this.enrolment = []
+				this.getEnrolment()
+		  }).catch(error => {
+			  console.log(error);
+		  })
+	 },
+
+	  getEnrolment(){
+		   const url = process.env.baseUrl+'/enroll/'
+
+		  
+
+		  axios.get(url).then(response => {
+			  	console.log(response.data.filter(enrolment => enrolment.student == this.$store.state.user_id && enrolment.course == this.course_id))
+		  }).catch(error => {
+			  console.log(error);
+		  })
+	 },
+
 	  getCourse(){
 
 		  const url = process.env.baseUrl+'/course/'+this.$route.params.id+'/'
@@ -309,6 +341,7 @@ export default {
 	  this.setCourse()
 	  this.getCourse();
 	  this.getWeeks();
+	  this.getEnrolment();
   }
 }
 </script>
