@@ -1,7 +1,15 @@
 <template>
   
+   <div  v-if="loading" class="col-md-12">
+                        <div style="margin-left:45%;margin-bottom:25%;margin-top:10%">
 
-  <div>
+
+                            <Loader></Loader>
+                        </div>
+
+                    </div>
+
+  <div v-else>
 	    <!--// Mini Header \\-->
         <div class="wm-mini-header">
             <span class="wm-blue-transparent"></span>
@@ -31,57 +39,7 @@
 			<div class="wm-main-section">
 				<div class="container">
 					<div class="row">
-						<!-- <aside class="col-md-3">
-							<div class="widget widget_course-price">
-								<div class="wm-widget-heading">
-									<h4>Biology Course </h4>
-								</div>
-							<a href="#">enroll this Week 4</a>
-								<ul>
-									<li><a href="#"><i class=" wmicon-social7"></i>234 Students</a></li>
-									<li><a href="#"><i class=" wmicon-clock2"></i><time datetime="2017-02-14">Duration: 2hr30mins</time></a></li>
-									<li><a href="#"><i class=" wmicon-book2"></i>14 Lectures</a></li>
-									<li><a href="#">
-										<div class="wm-levelrating">
-											<span class="rating-box" style="width:70%"></span>
-										</div>
-										Intermediate</a></li>
-									<li><a href="#"><i class=" wmicon-technology"></i>English Language</a></li>
-								</ul>
-							</div>
-							
-							
-							<div class="widget widget_archive">
-								<div class="wm-widget-title">
-									<h2>Archive</h2>
-								</div>
-								<div class="wm-select-two">
-									<select>
-										<option>Select Month</option>
-										<option>Select Month1</option>
-										<option>Select Month2</option>
-										<option>Select Month3</option>
-									</select>
-								</div>
-							</div>
-							<div class="widget widget_professor-info">
-								<div class="wm-widget-title">
-									<h2>About Professor</h2>
-								</div>
-								<figure>
-									<a href="#"><img src="../../../../static/extra-images/our-courses-author.jpg" alt=""></a>
-								</figure>
-								<div class="wm-Professor-info">
-									<h6><a href="#">Shelly T. Forrester</a></h6>
-									<span>15 yrs. experience</span>
-								</div>
-								<p>Shelly T. accompanied Dr. Stephen Harnish to SC12, an international supercomputing conference in Salt Lake City, Utah. At the conference.</p>
-								<a class="wm-read-more" href="#">Read More</a>
-							</div>
 						
-							
-							
-						</aside> -->
 
 
 
@@ -89,11 +47,17 @@
 						<div class="col-md-12">
 
                     <div class="wm-title-full">
+                                  <a v-if="completedCourse == false" @click="CompleteWeek" class="wm-more-details" style="margin-left:80%;height:45px"
+										href="#">Complete week</a>
+                                    <a v-else class="wm-more-details" style="margin-left:80%;">Week Completed</a>
                                 <h2 v-if="quizs.length > 0">Quiz For this Week Course</h2>
                                 <h2 v-else>No Quiz is Available For this Week Course</h2>
                             </div>
 <!-- {{getQuiz}} --> 
+
 <div v-if="loading"></div>
+
+
 
                                 <div v-else class="wm-courses wm-courses-popular">
                 <div class="question ml-sm-5 pl-sm-5 pt-2" v-if="quizs.length > 0">
@@ -123,6 +87,7 @@
                          <div v-if="quizs.length >0" class="ml-3 mr-sm-5 " style="margin-right:10px"> <button class="btn btn-primary ml-5" @click="showSoln">show answer</button> </div>
 
                     <div class="ml-3 mr-sm-5" v-if="currentquiz < quizs.length-1"> <button class="btn btn-success ml-5" @click="nextQuiz">Next</button> </div>
+  
                 </div>
 
             </div>
@@ -233,10 +198,45 @@ export default {
        quizs:[],
        currentquiz:0,
        showsoln:false,
-       course_id:this.$route.params.week
+       course_id:this.$route.params.week,
+       completed:[]
       }
   },
   methods:{
+CompleteWeek(){
+    
+    const url = process.env.baseUrl +"/course-progress/";
+    const data = {
+      course:this.course_id,
+      week:this.$route.params.id,
+      student:this.$store.state.user_id,
+      is_completed:true
+    }
+    axios.post(url,data).then(response => {
+			  	console.log(response.data)
+                  this.completed = []
+				this.FetchCompletedWeeks()
+		  }).catch(error => {
+			  console.log(error);
+		  })
+
+},
+FetchCompletedWeeks(){
+
+
+    const url = process.env.baseUrl +"/course-progress/";
+
+    axios.get(url).then(response => {
+           this.completed =  response.data.filter(week =>
+                  
+                  week.course == this.course_id && week.student == this.$store.state.user_id
+                  && week.is_completed == true && week.week == this.$route.params.id
+                  )
+    }).catch(error => {
+      console.log(error);   
+    })
+},
+
 
        getWeeks(){
           this.loading = true
@@ -287,7 +287,9 @@ export default {
       
   },
   computed:{
-
+ completedCourse(){
+			return this.completed.length >   0  ? true : false
+		},
       getQuiz(){
          if(this.quizs.length >0){
 
@@ -298,6 +300,7 @@ export default {
   mounted(){    
       this.getWeeks();
       this.getQuizs();
+      this.FetchCompletedWeeks();
   }
 
 }

@@ -1,5 +1,13 @@
 <template>
-    <div>
+   <div  v-if="loading" class="col-md-12">
+                        <div style="margin-left:45%;margin-bottom:25%;margin-top:10%">
+
+
+                            <Loader></Loader>
+                        </div>
+
+                    </div>
+    <div v-else>
         <!--// Mini Header \\-->
         <div class="wm-mini-header">
             <span class="wm-blue-transparent"></span>
@@ -161,6 +169,7 @@ export default {
             filterdexams: [],
             year: '',
             subject: '',
+            loading: true,
         }
     },
 

@@ -1,7 +1,14 @@
 <template>
+   <div  v-if="loading" class="col-md-12">
+                        <div style="margin-left:45%;margin-bottom:25%;margin-top:10%">
 
 
-<div>
+                            <Loader></Loader>
+                        </div>
+
+                    </div>
+
+  <div v-else>
 
     
 		<!--// Mini Header \\-->
@@ -39,18 +46,20 @@
 							<div class="wm-student-dashboard-nav">
 								<div class="wm-student-nav">
 									<figure>
-										<a href="#"><img src="extra-images/megersa.jpg" alt=""></a>
+										<a href="#"><img :src="user_data.profile_picture" alt="" style="width:90px"></a>
 									</figure>
 									<div class="wm-student-nav-text">
-										<h6>Megersa Fekadu</h6>
-										<a href="#">update image</a>
+										<h6>{{user_data.first_name}} {{user_data.last_name}}</h6>
+										<h6>{{user_data.username}}</h6>
 									</div>
 									<ul>
 										<li>
-											<a href="#">
+											<nuxt-link to="/profile">
+												<a href="#">
 												<i class="wmicon-avatar"></i>
 												Profile Details
 											</a>
+											</nuxt-link>
 										</li>
 										<li class="active">
 											<a href="#">
@@ -60,12 +69,7 @@
 										</li>
 										
 										
-										<li>
-											<a href="#">
-												<i class="wmicon-three"></i>
-												Settings
-											</a>
-										</li>
+										
 										<li>
 											<a href="#">
 												<i class="wmicon-arrow"></i>
@@ -90,129 +94,31 @@
 											<span>Status</span>
 										</li>
 										<li class="wm-student">
-											<span>Rating</span>
+											<span>week</span>
 										</li>
 									</ul>									
 								</div>
-								<div class="wm-article">
-									<ul>
+								<div  v-for="data in progress" :key="data.id" class="wm-article">
+									<ul v-if="getCourse(data.course) && getWeek(data.week)">
 										<li class="wm-courses-start">
 											<div class="wm-statement-started-text">
-												<h6><a href="#">Biology week 1</a></h6>
+												<h6><a href="#" >{{getCourse(data.course).name }}</a></h6>
 											
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">16/05/2022 - 17/05/2022</time></span>
+												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">last updated {{getCourse(data.course).updated_date |date}}</time></span>
 											</div>
 										</li>										
 										<li>
 											<a class="wm-status-courses wm-completed" href="#">Completed</a>
 										</li>
 										<li>
-											<small>8/10</small>
+											<small>{{getWeek(data.week).name}}</small>
 										</li>
 									</ul>									
 								</div>
-								<div class="wm-article">
-									<ul>
-										<li class="wm-courses-start">
-											<div class="wm-statement-started-text">
-												<h6><a href="#">Chemistry week 1</a></h6>
-												
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">9/04/2022 - 10/05/2022</time></span>
-											</div>
-										</li>
-										<li>
-											<a class="wm-status-courses wm-completed" href="#">Completed</a>
-										</li>
-										<li>
-											<small>10/10</small>
-										</li>										
-									</ul>									
-								</div>
-								<div class="wm-article">
-									<ul>
-										<li class="wm-courses-start">
-											<div class="wm-statement-started-text">
-												<h6><a href="#">Mathematics week 2</a></h6>
-											
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">20/06/2022 - 24/07/2022</time></span>
-											</div>
-										</li>
-										<li>
-											<a class="wm-status-courses wm-in-Progress" href="#">In Progress</a>
-										</li>
-										<li>
-											<small>4/10</small>
-										</li>										
-									</ul>									
-								</div>
-								<div class="wm-article">
-									<ul>
-										<li class="wm-courses-start">
-											<div class="wm-statement-started-text">
-												<h6><a href="#">Physics week 1</a></h6>
-												
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">5/04/2022 - 11/05/2022</time></span>
-											</div>
-										</li>
-										<li>
-											<a class="wm-status-courses wm-expired" href="#">Expired</a>
-										</li>
-										<li>
-											<small>0/10</small>
-										</li>										
-									</ul>									
-								</div>
-								<div class="wm-article">
-									<ul>
-										<li class="wm-courses-start">
-											<div class="wm-statement-started-text">
-												<h6><a href="#">Civics and Ethical Education week 1</a></h6>
-												
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">9/04/2022 - 10/05/2022</time></span>
-											</div>
-										</li>										
-										<li>
-											<a class="wm-status-courses wm-in-Progress" href="#">In Progress</a>
-										</li>
-										<li>
-											<small>10/10</small>
-										</li>
-									</ul>									
-								</div>
-								<div class="wm-article">
-									<ul>
-										<li class="wm-courses-start">
-											<div class="wm-statement-started-text">
-												<h6><a href="#">English week 1</a></h6>
-											
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">20/06/2022- 24/07/2022</time></span>
-											</div>
-										</li>
-										<li>
-											<a class="wm-status-courses wm-completed" href="#">Completed</a>
-										</li>
-										<li>
-											<small>8/10</small>
-										</li>										
-									</ul>									
-								</div>
-								<div class="wm-article">
-									<ul>
-										<li class="wm-courses-start">
-											<div class="wm-statement-started-text">
-												<h6><a href="#">Aptitude week 1</a></h6>
-										
-												<span><a href="#" class="wmicon-time2"></a><time datetime="2017-02-14">5/04/2022 - 11/05/2022</time></span>		
-											</div>
-										</li>
-										<li>
-											<a class="wm-status-courses wm-completed" href="#">Completed</a>
-										</li>
-										<li>
-											<small>7/10</small>
-										</li>										
-									</ul>									
-								</div>
+
+								
+								
+								
 							</div>										
 						</div>
 					</div>
@@ -230,9 +136,133 @@
 </template>
 
 <script>
+
+import axios from 'axios';
 export default {
 	 middleware:["check-auth","auth"],
-  layout:"MainLayout"
+  layout:"MainLayout",
+
+
+  data(){
+	  return{
+       loading:true,
+	   user_data:[],
+	   progress:[],
+	   courses:[],
+	   weeks:[],
+	   enrolled:[],
+
+	  }
+  },
+
+  methods:{
+
+	   getEnrolledCourses(){
+
+		   this.loading  = true;
+		   const url = process.env.baseUrl+'/enroll/'
+
+		  
+
+		  axios.get(url).then(response => {
+			this.enrolled = response.data.filter(enrolment => enrolment.student == this.$store.state.user_id)
+			this.loading = false;
+		  }).catch(error => {
+			  console.log(error);
+
+		  })
+	 },
+
+	   
+
+	   FetchUserData(){
+		   this.loading = true;
+         const url = process.env.Url + `/auser-api/student/${this.$store.state.user_id}/`
+
+          axios.get(url).then(response => {
+			  this.user_data = response.data;
+			  this.loading = false;
+		  }).catch(error => {
+			  this.loading  = false;
+			  console.log(error);
+		  })
+
+     },
+
+	 FetchProgress(){
+   this.loading = true;
+
+    const url = process.env.baseUrl +"/course-progress/";
+
+    axios.get(url).then(response => {
+           this.progress =  response.data.filter(week =>
+                  
+                  week.student == this.$store.state.user_id
+                  )
+
+				  this.loading = false;
+    }).catch(error => {
+      console.log(error);
+	  this.loading = false
+    })
+},
+
+
+getWeek(id){
+	return this.weeks.find(week => week.id == id)
+
+},
+
+getCourse(id){
+    const co=  this.courses.find(course => course.id == id)
+
+	return co
+
+},
+
+  getCourses(){
+            
+            this.loading = true;
+            const url = process.env.baseUrl+'/course/'
+            
+            axios.get(url).then(response=>{
+                this.courses = response.data;
+               
+                this.loading = false
+            }).catch(error=>{
+                console.log(error)
+                this.loading = false
+            })
+        },
+		getWeeks() {
+            
+			this.loading = true
+			const url = process.env.baseUrl + '/week/'
+
+			axios.get(url).then(response => {
+
+				this.weeks = response.data
+				this.loading = false;
+			}).catch(error => {
+				this.loading = false;
+				console.log(error);
+			})
+		},
+
+  },
+
+  
+
+
+
+  mounted(){
+
+	  this.FetchUserData()
+	  this.FetchProgress(),
+	  this.getCourses(),
+	  this.getWeeks(),
+	  this.getEnrolledCourses()
+  }
 }
 </script>
 

@@ -401,7 +401,8 @@ export default {
 
    return{
 
-     contact:true
+     contact:true,
+     loading:false,
    }
  }
  ,

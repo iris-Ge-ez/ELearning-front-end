@@ -1,7 +1,15 @@
 <template>
 
+    <div  v-if="loading" class="col-md-12">
+                        <div style="margin-left:45%;margin-bottom:25%;margin-top:10%">
 
-	<div>
+
+                            <Loader></Loader>
+                        </div>
+
+                    </div>
+
+	<div v-else>
 		<!--// Mini Header \\-->
 		<div class="wm-mini-header">
 			<span class="wm-blue-transparent"></span>
@@ -368,145 +376,134 @@
 
 
 	<!-- chat bot  -->
+<div :class="['chat-screen', expandchat ?  'show-chat' :'' ]">
+    <div class="chat-header">
+        <div class="chat-header-title">
+            Let’s chat? - We're online
+        </div>
+        <div class="chat-header-option hide">
+            <span class="dropdown custom-dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink1" style="will-change: transform;">
+                    <a class="dropdown-item" href="javascript:void(0);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#bc32ef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        Send Transcriptions
+                    </a>
+                    <a class="dropdown-item end-chat" href="javascript:void(0);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#bc32ef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-power"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                        End Chat
+                    </a>
+                </div>
+            </span>
+        </div>
+    </div>
+    <div class="chat-mail">
+        <div class="row">
+            <div class="col-md-12 text-center mb-2">
+                <p>Hi 👋! Please fill out the form below to start chatting with the next available agent.</p>
+            </div>
+        </div>
+        
+    </div>
+    <div class="chat-body">
+        <div class="chat-start">Monday, 1:27 PM</div>
 
-	<div id="chat-bot">
-		<div :class="['messenger br10', expandchat ? 'expanded' : '']">
-			<div class="timestamp">04:45 AM <p @click="ToggleUserView" v-if="view_users"
-					style="background-color:#0c4d2f;color:#fff"> close</p>
-				<p v-else @click="ToggleUserView" style="background-color:#222845 !important;color:#fff"> view users</p>
-			</div>
+        <div  v-for="(value, index) in respo" :key="index" :class="['chat-bubble', value.cls ]">{{value.msg}}</div>
+        
 
-			<div class="group">
-				<div class="chatroom" v-if="view_users">
-					<!-- msgs  -->
-					<div class="msg msg-left">
-						<h5>Joined Students</h5>
-					</div>
+        <div class="chat-bubble you">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto;display: block;shape-rendering: auto;width: 43px;height: 20px;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                <circle cx="0" cy="44.1678" r="15" fill="#ffffff">
+                    <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.6s"></animate>
+                </circle> <circle cx="45" cy="43.0965" r="15" fill="#ffffff">
+                <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.39999999999999997s"></animate>
+            </circle> <circle cx="90" cy="52.0442" r="15" fill="#ffffff">
+                <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.19999999999999998s"></animate>
+            </circle></svg>
+        </div>
+    </div>
+    <div class="chat-input mb-5" >
+        <input type="text" placeholder="Type a message..." v-model="message" @keyup.enter="getBotMessage">
+        <div class="input-action-icon">
+            <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg></a>
+            <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></a>
+        </div>
+    </div>
+    <div class="chat-session-end hide">
+        <h5>This chat session has ended</h5>
+        <p>Thank you for chatting with us, If you can take a minute and rate this chat:</p>
+        <div class="rate-me">
+            <div class="rate-bubble great">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg></span>
+                Great
+            </div>
+            <div class="rate-bubble bad">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-down"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg></span>
+                Bad
+            </div>
+        </div>
+        <a class="transcript-chat">Need a Transcript?</a>
+        <div class="powered-by">Powered by css3transition</div>
+    </div>
+</div>
+<div @click="ToggleChat" class="chat-bot-icon">
+    <img src="img/we-are-here.svg"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square animate"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x "><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+</div>
+<!-- Chat Bot UI Ends -->
+<!-- Time line Html Start -->
+<h1 class="hide">Responsive Timeline using Flexbox</h1>
+<div class="timeline hide">
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <img src="stylesheet/images/cities/delhi.svg"/>
+            <div>
+                January 2019
+            </div>
+        </div>
+        <div class="timeline-content">
+            <h2>Journey Start <span>(Delhi)</span></h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad saepe nulla quibusdam ut. Beatae, facere sequi blanditiis porro suscipit tempore ipsam iste ipsa, culpa quam vero, dolorem cupiditate. Magni, numquam?<button type="button" class="visit">Visit ›</button><img src="stylesheet/images/cities/delhi.svg"/></p>
+            <br>
+            <i class="fas fa-rocket fa-icon"></i>
+        </div>
+    </div>
 
-					<div class="msg msg-left">
-						<div style="background-color:#355f4b;">
-							<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#"
-								class="wm-authorpost">Shelly </a>
-						</div>
-					</div>
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <img src="stylesheet/images/cities/lucknow.svg"/>
+            <div>
+                February 2019
+            </div>
+        </div>
+        <div class="timeline-content">
+            <h2>Nawabo ka Sehar<span>(Lucknow)</span></h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad saepe nulla quibusdam ut. Beatae, facere sequi blanditiis porro suscipit tempore ipsam iste ipsa, culpa quam vero, dolorem cupiditate. Magni, numquam?<button type="button" class="visit">Visit ›</button><img src="stylesheet/images/cities/lucknow.svg"/></p>
 
-					<div class="msg msg-left">
-						<div style="background-color:#355f4b;">
-							<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#"
-								class="wm-authorpost">Tomas </a>
-						</div>
-					</div>
+            <br>
+            <i class="fas fa-graduation-cap fa-icon"></i>
+        </div>
+    </div>
 
-					<div class="msg msg-left">
-						<div style="background-color:#355f4b;">
-							<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#"
-								class="wm-authorpost">Mike </a>
-						</div>
-					</div>
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <img src="stylesheet/images/cities/prayagraj.svg"/>
+            <div>
+                March 2019
+            </div>
+        </div>
+        <div class="timeline-content">
+            <h2>Devotional Place<span>(Prayagraj)</span></h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad saepe nulla quibusdam ut. Beatae, facere sequi blanditiis porro suscipit tempore ipsam iste ipsa, culpa quam vero, dolorem cupiditate. Magni, numquam?<button type="button" class="visit">Visit ›</button><img src="stylesheet/images/cities/prayagraj.svg"/></p>
 
-					<div class="msg msg-left">
-						<div style="background-color:#355f4b;">
-							<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#"
-								class="wm-authorpost">Miraj </a>
-						</div>
-					</div>
-
-					<div class="msg msg-left">
-						<div style="background-color:#355f4b;">
-							<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#"
-								class="wm-authorpost">Yona </a>
-						</div>
-					</div>
-					<div class="msg msg-left">
-						<div style="background-color:#355f4b;">
-							<a style="color:#fff; padding:10px 15px;align:center;margin-left:5px" href="#"
-								class="wm-authorpost">Esrael </a>
-						</div>
-					</div>
-
-					<!-- msgs  -->
-				</div>
-
-				<div class="chatroom">
-					<!-- msgs  -->
-					<div class="msg msg-left">
-						<div class="bubble">
-							<h6 class="name">AdDY's Bot</h6>
-							Hello, I am a smart chat bot, <br />
-							How can I help you.
-						</div>
-					</div>
-					<div class="msg msg-right">
-						<div class="bubble">
-							Oh! Look at you. You are awesome
-						</div>
-					</div>
-					<div class="msg msg-right">
-						<div class="bubble">
-							Can you please tell me who created you?
-						</div>
-					</div>
-					<div class="msg msg-left">
-						<div class="bubble">
-							Yes, Of course! Adnan Khan created me. <br />
-							He's behind my awesomeness. He did a great job. didn't he?
-						</div>
-					</div>
-					<div class="msg msg-right">
-						<div class="bubble">
-							Yeah! He did an amazing job.<br />
-							How can I contact him?
-						</div>
-					</div>
-					<div class="msg msg-left">
-						<div class="bubble">
-							Here's my boss' Fiverr Username. <br />
-							<a href="www.fiverr.com/adnanaddy" target="_blank">fiverr.com/adnanaddy</a>
-						</div>
-					</div>
-					<div class="msg msg-right">
-						<div class="bubble">
-							Thanks alot. See you next time. Good bye
-						</div>
-					</div>
-
-					<div class="msg msg-left">
-						<div class="bubble">
-							Good bye. Take care
-						</div>
-					</div>
-					<!-- msgs  -->
-				</div>
-
-			</div>
-
-			<div class="type-area">
-				<form @submit.prevent="getBotMessage">
-
-					<input type="text" v-model="message" class="typing" placeholder="Type Here...">
-					<input type="submit" placeholder="send">
-
-
-				</form>
-				<span class="send">
-					<i class="bi bi-arrow-return-left"></i>
-				</span>
-			</div>
-		</div>
-		<div :class="['icon', expandchat ? 'expanded' : '']" @click="ToggleChat">
-			<div class="user">
-
-				You
-			</div>
-			<p v-if="expandchat"> Close</p>
-			<p v-else> <i class=" wmicon-social7"></i></p>
-		</div>
-
-	</div>
-
-	<!--   main body end  -->
-
-
+            <br>
+            <i class="fas fa-power-off fa-icon"></i>
+        </div>
+    </div>
+</div>
 	</div>
 
 </template>
@@ -516,11 +513,15 @@
 import axios from 'axios'
 
 
+
 export default {
 	middleware: ["check-auth", "auth"],
 	layout: "MainLayout",
 
-
+head(){
+   script:[
+           { src: "../../../../static/app.js" }, ]
+},
 	data() {
 
 		return {
@@ -532,6 +533,7 @@ export default {
 			loading: true,
 			nextWeeks: [],
 			week_id: this.$route.params.week,
+			respo:[],
 
 		}
 	},
@@ -553,6 +555,11 @@ export default {
 				{ rel: "stylesheet", href: "../../css/color-four.css" },
 				{ rel: "stylesheet", href: "../../css/responsive.css" },
 				{ rel: "stylesheet", href: "../../build/mediaelementplayer.css" },
+				{ rel: "stylesheet", href: "../../css/chatBot.css" },
+				{ rel: "stylesheet", href: "../../css/chatBot.less" },
+				{ rel: "stylesheet", href: "../../css/main.css" },
+				{ rel: "stylesheet", href: "../../css/select2.min.css" },
+		
 
 
 			],
@@ -580,23 +587,58 @@ export default {
 	methods: {
 
 
+
+
+getCookie(name) {
+  // Add the = sign
+  name = name + '=';
+
+  // Get the decoded cookie
+  const decodedCookie = decodeURIComponent(document.cookie);
+
+  // Get all cookies, split on ; sign
+  const cookies = decodedCookie.split(';');
+
+  // Loop over the cookies
+  for (let i = 0; i < cookies.length; i++) {
+    // Define the single cookie, and remove whitespace
+    const cookie = cookies[i].trim();
+
+    // If this cookie has the name of what we are searching
+    if (cookie.indexOf(name) == 0) {
+      // Return everything after the cookies name
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+},
+
 		getBotMessage() {
-			const form = new FormData();
-			const url = process.env.Url + "/chat-bot/";
+            const req = {"cls":'me', "msg":this.message};
+			this.respo.push(req)
 
-			form.append("body", this.message)
-			const config = {
-				headers: { 'content-type': 'application/json' },
-				withCredentials: true
-			}
 
-			axios.post(url, form,config)
-				.then(response => {
-					console.log(response)
-				})
-				.catch(err => {
-					console.log(err)
-				})
+			fetch('http://192.168.0.12:8000/chat-bot/', {
+            method: 'POST',
+            body: JSON.stringify({ message: this.message }),
+            mode: 'cors',
+            credentials: 'same-origin',
+            headers: {
+                "X-CSRFToken": this.getCookie("csrftoken"),
+                'Content-Type': 'application/json',
+            }
+          })
+          .then(r => r.json())
+          .then(r => {
+			  console.log(r.answer)
+            this.respo.push(
+				{   "cls":'you', 
+					"msg":r.answer
+				}
+			)
+
+        }).catch((error) => {
+            console.error(error)
+          });
 		},
 
 		ToggleChat() {
@@ -648,6 +690,21 @@ export default {
 </script>
 
 <style scoped>
+.chat-bubble.me{
+	background-color: #bae4d9;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.chat-screen{
+	width:450px !important
+}
+.chat-screen .chat-body{
+    width:100%;
+	overflow-y: scroll;
+}
 #chat-bot {
 	position: fixed;
 	bottom: 20px;

@@ -1,7 +1,14 @@
 <template>
   
+    <div  v-if="loading" class="col-md-12">
+                        <div style="margin-left:45%;margin-bottom:25%;margin-top:10%">
 
-  <div>
+
+                            <Loader></Loader>
+                        </div>
+
+                    </div>
+  <div v-else>
 	    <!--// Mini Header \\-->
         <div class="wm-mini-header">
             <span class="wm-blue-transparent"></span>
@@ -37,8 +44,8 @@
 								<div class="wm-widget-heading">
 									<h4>{{course.name}} </h4>
 								</div>
-						<a href="#" v-if="enrolment" >You already enrolled this course</a>
-							<a href="#" @click="EnrollCourse" v-else >enroll this course</a>
+						<a href="#" v-if="enrolled" >You already enrolled this course</a>
+							<a href="#" @click="EnrollCourse" v-else >enroll this course {{enrolment.length}}</a>
 								<!-- <ul>
 									<li><a href="#"><i class=" wmicon-social7"></i>234 Students</a></li>
 									<li><a href="#"><i class=" wmicon-clock2"></i><time datetime="2017-02-14">Duration: 2hr30mins</time></a></li>
@@ -98,62 +105,13 @@
 									</div>
 								</div>								
 							</div>
-							<!-- <div class="wm-courses-reviewes">
-								<div class="wm-ourcourses-left">
-									<h6>Reviews</h6>
-									<div class="wm-rating">
-										<span class="rating-box" style="width:100%"></span>																				
-									</div>
-									<a href="#">3 Reviews</a>
-								</div>
-								<div class="wm-ourcourses-right">
-									<a class="wm-previous-icon" href="#"><i class="fa fa-angle-left" ></i>previous Course</a>
-									<a class="wm-Next-icon" href="#">Next Course<i class="fa fa-angle-right" ></i></a>
-								</div>
-							</div> -->
+							
 							<div class="wm-our-course-detail">
 								<div class="wm-title-full">
 									<h2>{{course.name}}</h2>
 								</div>
 								<p class="wm-text">{{course.description}}</p>
-								<!-- <p>The programme encourages students to develop advanced and speculative approaches to the design of cities, landscape and territories. It promotes high design values and the integration of new and innovative technologies to address the challenges facing contemporary cities, such as urban growth, climate change, globalisation and social inequality. The programme is designed for students of architecture, landscape architecture, engineering and related disciplines, who wish to enhance their academic, intellectual and professional skills. </p> -->
-								<!-- <div class="wm-course-blockquote-two">
-									<blockquote>Training is everything. The peach was once a bitter almond; cauliflower is nothing but cabbage with an education.</blockquote>
-									<span>- Mark Twain</span>
-								</div>								 -->
-								<!-- <div class="wm-courses-info">
-									<div class="wm-title-full">
-										<h2>What You’ll Study</h2>
-									</div>
-									<ul>
-										<li><a href="#" class="wmicon-lock"></a>Landscape architecture</li>
-										<li><a href="#" class="wmicon-lock"></a>Classical Archaeology and Ancient History</li>	
-										<li><a href="#" class="wmicon-lock"></a>Engineering</li>
-										<li><a href="#" class="wmicon-lock"></a>Mathematics</li>
-										<li><a href="#" class="wmicon-lock"></a>Planning or all of related discipline</li>
-										<li><a href="#" class="wmicon-lock"></a>Mathematics and Computer Science</li>
-										<li><a href="#" class="wmicon-lock"></a>Exceptionally, applicants from geography </li>	
-										<li><a href="#" class="wmicon-lock"></a>Philosophy, Politics and Economics(PPE)</li>
-										<li><a href="#" class="wmicon-lock"></a>Ecology & social sciences will also be considered</li>
-										<li><a href="#" class="wmicon-lock"></a>Mathematics and Statistics</li>
-									</ul>
-								</div>								 -->
-								<!-- <div class="wm-certification-listing">
-									<div class="wm-title-full">
-										<h2>What You Have to Perform After Taking This Course</h2>
-									</div>
-									<p>The programme is designed for students of architecture, landscape architecture, engineering and related disciplines, who wish to enhance their academic, intellectual and professional skills. </p>
-									<ul>
-										<li><a href="#" class="wmicon-mark"></a>Research the conditions of urbanism</li>
-										<li><a href="#" class="wmicon-mark"></a>Employs advanced design techniques </li>
-										<li><a href="#" class="wmicon-mark"></a>Lens of landscape theory and design practice</li>
-										<li><a href="#" class="wmicon-mark"></a>inovative methodologies </li>
-										<li><a href="#" class="wmicon-mark"></a>Employ advanced design techniques</li>
-										<li><a href="#" class="wmicon-mark"></a>Develop speculative designs</li>
-										<li><a href="#" class="wmicon-mark"></a>Innovative methodologies</li>
-										<li><a href="#" class="wmicon-mark"></a>Strategies & interventions  </li>
-									</ul>																		
-								</div>	 -->
+								
 							</div>
 
 
@@ -163,11 +121,16 @@
                             </div>
                             <div class="wm-courses wm-courses-popular">
                                 <ul class="row">
-                                 <nuxt-link v-for="week in thisCourseWeeks" :key="week.id"  :to="`/course/${course_id}/${week.id}`"> 
+                                 <nuxt-link v-for="week in thisCourseWeeks" :key="week.id"  :to="enrolled ? `/course/${course_id}/${week.id}` : ''"> 
                                     <li  class="col-md-4">
                                         <div class="wm-courses-popular-wrap">
                                             <figure> <a href="#"><img :src="week.thumbnail" alt="">
-											 <span class="wm-popular-hover"> <small>select Week</small> </span> </a>
+											 <span class="wm-popular-hover">
+												 
+												 <small v-if="enrolled">select Week</small> 
+												 <small v-else>Enroll  First</small> 
+											 
+											 </span> </a>
                                                 <figcaption>
                                                     <img src="../../static/extra-images/papular-courses-thumb-1.jpg" alt="">
                                                     <!-- <h6><a href="#">Shelly T. Forrester</a></h6> -->
@@ -293,7 +256,7 @@ export default {
 		  
 
 		  axios.get(url).then(response => {
-			  	console.log(response.data.filter(enrolment => enrolment.student == this.$store.state.user_id && enrolment.course == this.course_id))
+			this.enrolment = response.data.filter(enrolment => enrolment.student == this.$store.state.user_id && enrolment.course == this.course_id)
 		  }).catch(error => {
 			  console.log(error);
 		  })
@@ -334,6 +297,10 @@ export default {
         
 		thisCourseWeeks(){
 			return this.weeks.filter(week => week.course == this.$route.params.id)
+		},
+
+		enrolled(){
+			return this.enrolment.length > 0 && this.enrolment  ? true : false
 		}
   },
 
