@@ -45,7 +45,7 @@
 									<h4>{{course.name}} </h4>
 								</div>
 						<a href="#" v-if="enrolled" >You already enrolled this course</a>
-							<a href="#" @click="EnrollCourse" v-else >enroll this course {{enrolment.length}}</a>
+							<a href="#" @click="EnrollCourse" v-else >enroll this course</a>
 								<!-- <ul>
 									<li><a href="#"><i class=" wmicon-social7"></i>234 Students</a></li>
 									<li><a href="#"><i class=" wmicon-clock2"></i><time datetime="2017-02-14">Duration: 2hr30mins</time></a></li>
@@ -168,148 +168,154 @@
 </template>
 
 <script>
-
-import axios from 'axios'
+import axios from "axios";
 
 export default {
-	 middleware:["check-auth","auth"],
-  layout:"MainLayout",
+  middleware: ["check-auth", "auth"],
+  layout: "MainLayout",
 
-
-  head(){
-
-	  return {
-
-		    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: "stylesheet", href: "../css/bootstrap.css" },
-      { rel: "stylesheet", href: "../css/font-awesome.css" },
-      { rel: "stylesheet", href: "../css/flaticon.css" },
-      { rel: "stylesheet", href: "../css/slick-slider.css" },
-      { rel: "stylesheet", href: "../css/prettyphoto.css" },
-      { rel: "stylesheet", href: "../style.css" },
-      { rel: "stylesheet", href: "../css/color.css" },
-      { rel: "stylesheet", href: "../css/color-two.css" },
-      { rel: "stylesheet", href: "../css/color-three.css" },
-      { rel: "stylesheet", href: "../css/color-four.css" },
-      { rel: "stylesheet", href: "../css/responsive.css" },
-      { rel: "stylesheet", href: "../build/mediaelementplayer.css" },
-     
-      
+  head() {
+    return {
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        { rel: "stylesheet", href: "../css/bootstrap.css" },
+        { rel: "stylesheet", href: "../css/font-awesome.css" },
+        { rel: "stylesheet", href: "../css/flaticon.css" },
+        { rel: "stylesheet", href: "../css/slick-slider.css" },
+        { rel: "stylesheet", href: "../css/prettyphoto.css" },
+        { rel: "stylesheet", href: "../style.css" },
+        { rel: "stylesheet", href: "../css/color.css" },
+        { rel: "stylesheet", href: "../css/color-two.css" },
+        { rel: "stylesheet", href: "../css/color-three.css" },
+        { rel: "stylesheet", href: "../css/color-four.css" },
+        { rel: "stylesheet", href: "../css/responsive.css" },
+        { rel: "stylesheet", href: "../build/mediaelementplayer.css" },
       ],
 
-      script:[
-           { src: "../script/jquery.js" },
-           { src: "../script/modernizr.js" },
-           { src: "../script/bootstrap.min.js" },
-           { src: "../script/jquery.prettyphoto.js" },
-           { src: "../script/jquery.countdown.min.js" },
-           { src: "../script/fitvideo.js" },
-           { src: "../script/skills.js" },
-           { src: "../script/slick.slider.min.js" },
-           { src: "../script/waypoints-min.js" },
-           { src: "../build/mediaelement-and-player.min.js" },
-           { src: "../script/isotope.min.js" },
-           { src: "../script/jquery.nicescroll.min.js" },
-           { src: "../https://maps.googleapis.com/maps/api/js" },
-           { src: "../script/functions.js" },
-           
-         ]
-	  }
+      script: [
+        { src: "../script/jquery.js" },
+        { src: "../script/modernizr.js" },
+        { src: "../script/bootstrap.min.js" },
+        { src: "../script/jquery.prettyphoto.js" },
+        { src: "../script/jquery.countdown.min.js" },
+        { src: "../script/fitvideo.js" },
+        { src: "../script/skills.js" },
+        { src: "../script/slick.slider.min.js" },
+        { src: "../script/waypoints-min.js" },
+        { src: "../build/mediaelement-and-player.min.js" },
+        { src: "../script/isotope.min.js" },
+        { src: "../script/jquery.nicescroll.min.js" },
+        { src: "../https://maps.googleapis.com/maps/api/js" },
+        { src: "../script/functions.js" },
+      ],
+    };
   },
 
-  data(){
+  data() {
+    return {
+      loading: true,
+      course: [],
+      weeks: [],
+      course_id: this.$route.params.id,
+      enrolment: [],
+    };
+  },
+  methods: {
+    EnrollCourse() {
+      const url = process.env.baseUrl + "/enroll/";
 
-	  return{
-           loading: true,
-		   course:[],
-		   weeks:[],
-		   course_id:this.$route.params.id,
-		   enrolment:[],
+      const data = {
+        student: this.$store.state.user_id,
+        course: this.course_id,
+      };
 
-	  }
+      axios
+        .post(url, data)
+        .then((response) => {
+          console.log(response.data);
+          this.enrolment = [];
+          this.getEnrolment();
 
-  }
-  ,
-  methods:{
+          this.$swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your work has been Enrolled to the course",
+            showConfirmButton: true,
+            timer: 1500,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
 
-     EnrollCourse(){
-		   const url = process.env.baseUrl+'/enroll/'
+    getEnrolment() {
+      const url = process.env.baseUrl + "/enroll/";
 
-		   const data ={
-			   student:this.$store.state.user_id,
-			   course:this.course_id
-		   }
+      axios
+        .get(url)
+        .then((response) => {
+          this.enrolment = response.data.filter(
+            (enrolment) =>
+              enrolment.student == this.$store.state.user_id &&
+              enrolment.course == this.course_id
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
 
-		  axios.post(url,data).then(response => {
-			  	console.log(response.data)
-				this.enrolment = []
-				this.getEnrolment()
-		  }).catch(error => {
-			  console.log(error);
-		  })
-	 },
+    getCourse() {
+      const url =
+        process.env.baseUrl + "/course/" + this.$route.params.id + "/";
 
-	  getEnrolment(){
-		   const url = process.env.baseUrl+'/enroll/'
+      axios
+        .get(url)
+        .then((response) => {
+          this.course = response.data;
+          this.loading = false;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
 
-		  
+    setCourse() {
+      this.$store.commit("setCourse", this.course);
+    },
 
-		  axios.get(url).then(response => {
-			this.enrolment = response.data.filter(enrolment => enrolment.student == this.$store.state.user_id && enrolment.course == this.course_id)
-		  }).catch(error => {
-			  console.log(error);
-		  })
-	 },
+    getWeeks() {
+      const url = process.env.baseUrl + "/week/";
 
-	  getCourse(){
-
-		  const url = process.env.baseUrl+'/course/'+this.$route.params.id+'/'
-
-		  axios.get(url).then(response => {
-			  this.course = response.data;
-			  this.loading = false;
-		  }).catch(error => {
-			  console.log(error);
-		  })
-	  },
-	  
-	  setCourse(){
-		  this.$store.commit('setCourse',this.course)
-	  },
-
-	  getWeeks(){
-
-		  const url = process.env.baseUrl+'/week/'
-
-		  axios.get(url).then(response => {
-			  this.weeks =  response.data;
-			  this.loading = false;
-		  }).catch(error => {
-			  console.log(error);
-		  })
-	  },
-
-
+      axios
+        .get(url)
+        .then((response) => {
+          this.weeks = response.data;
+          this.loading = false;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 
-  computed:{
-        
-		thisCourseWeeks(){
-			return this.weeks.filter(week => week.course == this.$route.params.id)
-		},
+  computed: {
+    thisCourseWeeks() {
+      return this.weeks.filter((week) => week.course == this.$route.params.id);
+    },
 
-		enrolled(){
-			return this.enrolment.length > 0 && this.enrolment  ? true : false
-		}
+    enrolled() {
+      return this.enrolment.length > 0 && this.enrolment ? true : false;
+    },
   },
 
-  mounted(){
-	  this.setCourse()
-	  this.getCourse();
-	  this.getWeeks();
-	  this.getEnrolment();
-  }
-}
+  mounted() {
+    this.setCourse();
+    this.getCourse();
+    this.getWeeks();
+    this.getEnrolment();
+  },
+};
 </script>
 

@@ -207,7 +207,7 @@ CompleteWeek(){
     
     const url = process.env.baseUrl +"/course-progress/";
     const data = {
-      course:this.course_id,
+      course:this.$route.params.week,
       week:this.$route.params.id,
       student:this.$store.state.user_id,
       is_completed:true

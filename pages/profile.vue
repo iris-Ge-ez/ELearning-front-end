@@ -135,95 +135,117 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-	 middleware:["check-auth","auth"],
-  layout:"MainLayout",
+  middleware: ["check-auth", "auth"],
+  layout: "MainLayout",
 
-  data(){
-	  return{
+  data() {
+    return {
+      user_data: [],
+      loading: true,
 
+      //   user update
 
-		  user_data:[],
-		  loading:true,
-
-
-		//   user update
-
-		sex:"",
-        phone:"",
-        profile_picture:"",
-        academic_level:"",
-        username:"",
-        first_name:"",
-        last_name:"",
-        email:"",
-	    creating:false,
-
-	  }
+      sex: "",
+      phone: "",
+      profile_picture: "",
+      academic_level: "",
+      username: "",
+      first_name: "",
+      last_name: "",
+      email: "",
+      creating: false,
+    };
   },
 
-  methods:{
-	  SaveProfile(e){
-           
-        this.profile_picture = e.target.files[0];
+  methods: {
+
+
+	//   Save Profile File To variable
+
+    SaveProfile(e) {
+      this.profile_picture = e.target.files[0];
     },
 
 
-RegisterUser(){
-       this.creating = true
-            const form = new FormData();
-            const url = process.env.Url + `/auser-api/profile-update/${this.$store.state.user_id}/`
-            form.append('username',this.username ? this.username : this.user_data.username);
-            form.append('first_name',this.first_name ? this.first_name : this.user_data.first_name);
-            form.append('last_name',this.last_name ? this.last_name : this.user_data.last_name);
-            form.append('sex',this.sex ? this.sex : this.user_data.sex);
-            form.append('phone',this.phone ? this.phone : this.user_data.phone);
-            form.append('email',this.email ? this.email :this.user_data.email);
-            form.append('academic_level',this.academic_level ? this.academic_level : this.user_data.academic_level);
+// ApI Call to Register User
+
+    RegisterUser() {
+      this.creating = true;
+      const form = new FormData();
+      const url =
+        process.env.Url +
+        `/auser-api/profile-update/${this.$store.state.user_id}/`;
+      form.append(
+        "username",
+        this.username ? this.username : this.user_data.username
+      );
+      form.append(
+        "first_name",
+        this.first_name ? this.first_name : this.user_data.first_name
+      );
+      form.append(
+        "last_name",
+        this.last_name ? this.last_name : this.user_data.last_name
+      );
+      form.append("sex", this.sex ? this.sex : this.user_data.sex);
+      form.append("phone", this.phone ? this.phone : this.user_data.phone);
+      form.append("email", this.email ? this.email : this.user_data.email);
+      form.append(
+        "academic_level",
+        this.academic_level
+          ? this.academic_level
+          : this.user_data.academic_level
+      );
+
+      form.append(
+        "profile_picture",
+        this.profile_picture
+          ? this.profile_picture
+          : this.user_data.profile_picture
+      );
+
+      axios
+        .put(url, form)
+        .then((response) => {
+          console.log(response.data);
+
+          alert("Update Successful");
+          this.user_data = [];
+          this.user_data = response.data;
+          this.creating = false;
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+          this.creating = false;
+        });
+    },
 
 
+	//  Get User Data
+	
+    FetchUserData() {
+      const url =
+        process.env.Url + `/auser-api/student/${this.$store.state.user_id}/`;
 
-            form.append('profile_picture',this.profile_picture ? this.profile_picture : this.user_data.profile_picture);
-
-            axios.put(url,form).then(response=>{
-
-                console.log(response.data)
-            
-
-                    alert("Update Successful");
-					this.user_data = []
-					this.user_data = response.data
-                     this.creating = false
-                  
-                }).catch(error=>{
-                    console.log(error.response.data)
-                     this.creating = false
-                })
-   },
-	   FetchUserData(){
-         const url = process.env.Url + `/auser-api/student/${this.$store.state.user_id}/`
-
-          axios.get(url).then(response => {
-			  this.user_data = response.data;
-			  this.loading = false;
-		  }).catch(error => {
-			  console.log(error);
-		  })
-
-     },
-
-
-	 
+      axios
+        .get(url)
+        .then((response) => {
+          this.user_data = response.data;
+          this.loading = false;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 
-  mounted(){
-
-	  this.FetchUserData()
-  }
-}
+  mounted() {
+    this.FetchUserData();
+  },
+};
 </script>
 
 <style>
-
 </style>

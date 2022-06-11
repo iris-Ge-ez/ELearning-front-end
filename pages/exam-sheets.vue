@@ -173,6 +173,8 @@ export default {
         }
     },
 
+
+// Watcher to Watch Change Effect on the Data and Update the View
     watch:{
 
         year(newValue,oldValue){
@@ -190,6 +192,8 @@ export default {
 
     methods: {
 
+// Get all exams Sheets
+
         getExams() {
             this.loading = true
 
@@ -206,6 +210,7 @@ export default {
         
 
 // Filter Exams 
+
         filterexams(field, value) {
             this.filterdexams = []
             if(this.subject && !this.year){
