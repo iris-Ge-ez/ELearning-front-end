@@ -39,102 +39,20 @@
                 <div class="container">
                     <div class="row">
                         
+                        
                         <aside class="col-md-3">
-                            <div class="widget wm-search-course">
-                                <h3 class="wm-short-title wm-color">Find Your Course</h3>
-                                <p>Find your Chatroom here:</p>
-                                <form>
-                                    <ul>
-                                        <li>
-                                            <div class="">
-                                                
-                                                <div class="wm-radio-partition">
-                                                    <label for="female">Chatroom name</label>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li> <input type="text" value="Course Name" onblur="if(this.value == '') { this.value ='Course Name'; }" onfocus="if(this.value =='Course Name') { this.value = ''; }"> <i class="wmicon-search"></i> </li>
-                                       
-                                        <li> <input type="submit" value="Search Chatroom"> </li>
-                                    </ul>
-                                </form>
-                            </div>
-                            <div class="widget widget_check-box widget_scroll-box">
-                                <h5>Search By Type</h5>
-                                <ul>
-                                    <li>
-                                        <input id="type1" type="checkbox">
-                                        <label for="type1">
-                                            <span></span>
-                                            All Courses
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input id="type2" type="checkbox">
-                                        <label for="type2">
-                                            <span></span>
-                                            Chemistry
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input id="type3" type="checkbox">
-                                        <label for="type3">
-                                            <span></span>
-                                            Biology
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input id="type4" type="checkbox">
-                                        <label for="type4">
-                                            <span></span>
-                                            English
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input id="type5" type="checkbox">
-                                        <label for="type5">
-                                            <span></span>
-                                            Physics
-
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input id="type6" type="checkbox">
-                                        <label for="type6">
-                                            <span></span>
-                                            Mathematics
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input id="type7" type="checkbox">
-                                        <label for="type7">
-                                            <span></span>
-                                           Schoolastic Aptitude
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input id="type7" type="checkbox">
-                                        <label for="type7">
-                                            <span></span>
-                                         Civics
-                                        </label>
-                                    </li>
-                                   
-                                    
-                                   
-                                  
-                                   
-                                </ul>
-                            </div>
+                            
+                         
                           
                         </aside>
                         
                         <div class="col-md-9">
                             <div class="wm-filter-box">
                                 <div class="wm-apply-select">
-                                    <select>
-                                        <option>Grade 11</option>
-                                        <option>Grade 12</option>
+                                    <select v-model="grade">
+                                        <option value="1">Grade 11</option>
+                                        <option value="2">Grade 12</option>
+                                        <option value="">All</option>
                                        
                             
                                         
@@ -152,7 +70,7 @@
                             </div>
 
           <div  v-if="loading == false">
-                         <div v-for="room in chatrooms" :key="room.id" class="wm-promo-box wm-typography-element">
+                         <div v-for="room in filterd_rooms" :key="room.id" class="wm-promo-box wm-typography-element">
 								<div class="wm-promo-box-text">
 									<h2> {{room.name}} </h2>
 									
@@ -190,10 +108,19 @@ export default {
      return{
          chatrooms:[],
          loading:true,
-         chat_url:process.env.Chat
+         chat_url:process.env.Chat,
+         filterd_rooms:[],
+         grade:""
      }
  },
-
+  watch: {
+    // whenever grdae changes, this function will run
+     grade(newValue,oldValue){
+         console.log("change " +newValue)
+        
+        this.FilterRooms()
+     }
+  },
 
  methods:{
 
@@ -202,12 +129,22 @@ export default {
 
           axios.get(url).then(response => {
 			  this.chatrooms = response.data;
+              this.filterd_rooms = response.data
 			  this.loading = false;
 		  }).catch(error => {
 			  console.log(error);
 		  })
 
-     }
+     },
+      FilterRooms(){
+              if(this.grade == ""){
+                this.filterd_rooms = this.chatrooms
+                }else{
+                    this.filterd_rooms = this.chatrooms.filter(course=>{
+                        return course.grade == this.grade
+                    })
+                }
+        },
  },
 
 

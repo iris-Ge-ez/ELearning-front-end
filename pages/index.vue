@@ -43,34 +43,7 @@
 							<div class="wm-search-course">
                                 <h3 class="wm-short-title wm-color">Find Your Course</h3>
                                 <p>Fill in the form below to find your course:</p>
-                                <form>
-                                    <ul>
-                                        <li>
-                                            <div class="wm-radio">
-                                                <div class="wm-radio-partition">
-                                                    <input id="male" type="radio" name="gender" value="male">
-                                                    <label for="male">by ID</label>
-                                                </div>
-                                                <div class="wm-radio-partition">
-                                                    <input id="female" type="radio" name="gender" value="female">
-                                                    <label for="female">by name</label>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li> <input type="text" value="Course Name" onblur="if(this.value == '') { this.value ='Course Name'; }" onfocus="if(this.value =='Course Name') { this.value = ''; }"> <i class="wmicon-search"></i> </li>
-                                        <li>
-                                            <div class="wm-apply-select">
-                                                <select>
-                                                    <option>Category</option>
-                                                    <option>Category</option>
-                                                    <option>Category</option>
-                                                    <option>Category</option>
-                                                </select>
-                                            </div>
-                                        </li>
-                                        <li> <input type="submit" value="Search course"> </li>
-                                    </ul>
-                                </form>
+                                
                             </div>
 						</div>
                         <div class="col-md-8">
@@ -142,78 +115,24 @@
                             <div class="wm-fancy-title"> <h2>Popular <span>Courses</span></h2> </div>
                             <div class="wm-courses wm-courses-popular">
                                 <ul class="row">
-                                    <li class="col-md-3">
+                                    <li v-for="course in popular" :key="course.id" class="col-md-3">
                                         <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/455555.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
+                                            <figure> <a href="#"><img :src="getInstractor(course.instructor).profile_picture" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
                                                 <figcaption>
                                                     <img src="extra-images/papular-courses-thumb-1.jpg" alt="">
-                                                    <h6><a href="#">Mr. Araarsaa</a></h6>
+                                                    <h6><a href="#"></a> {{getInstractor(course.instructor).username}}</h6>
                                                 </figcaption>
                                             </figure>
                                             <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Biology</a></h6>
-                                                <div class="wm-courses-price"> <span>new</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 342</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 10</a></li>
-                                                </ul>
+                                                <h6><a href="#">{{course.name}}  </a></h6>
+                                                <div class="wm-courses-price"> <span>new {{course.created_date |date}}</span> </div>
+                                                
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="col-md-3">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/papular-courses-2.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-1.jpg" alt="">
-                                                    <h6><a href="#">Ms.Ayantu</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Civics & Ethical Education </a></h6>
-                                                <div class="wm-courses-price"> <span>1 week ago</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 438</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 28</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/sura.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-1.jpg" alt="">
-                                                    <h6><a href="#">Mr.Sura</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Mathematics</a></h6>
-                                                <div class="wm-courses-price"> <span>3 days ago</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 309</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 19</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <div class="wm-courses-popular-wrap">
-                                            <figure> <a href="#"><img src="extra-images/fira.jpg" alt=""> <span class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                                <figcaption>
-                                                    <img src="extra-images/papular-courses-thumb-1.jpg" alt="">
-                                                    <h6><a href="#">Ms.Burtukan</a></h6>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="wm-popular-courses-text">
-                                                <h6><a href="#">Physics</a></h6>
-                                                <div class="wm-courses-price"> <span>new</span> </div>
-                                                <ul>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 298</a></li>
-                                                    <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 11</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
+                                   
+                                  
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -276,12 +195,7 @@
                         <div class="col-md-12">
                             <div class="wm-subscribe-form">
                                 <h2>Still not convinced? We can help you!</h2>
-                                <p>Fill out the form below and we will contact you.</p>
-                                <form>
-                                    <input type="text" value="Name:" onblur="if(this.value == '') { this.value ='Name:'; }" onfocus="if(this.value =='Name:') { this.value = ''; }">
-                                    <input type="email" value="E-mail:" onblur="if(this.value == '') { this.value ='E-mail:'; }" onfocus="if(this.value =='E-mail:') { this.value = ''; }">
-                                    <input type="submit" value="Get Advice">
-                                </form>
+                                
                             </div>
                         </div>
 
@@ -315,27 +229,48 @@
                                         <div class="col-md-8">
                                             <div class="wm-contact-form">
                                                 <span>Talk To Us Today</span>
-                                                <form>
-                                                    <ul>
-                                                        <li>
-                                                            <i class="wmicon-black"></i>
-                                                            <input type="text" value="Name" onblur="if(this.value == '') { this.value ='Name'; }" onfocus="if(this.value =='Name') { this.value = ''; }">
-                                                        </li>
-                                                        <li>
-                                                            <i class="wmicon-symbol3"></i>
-                                                            <input type="text" value="E-mail" onblur="if(this.value == '') { this.value ='E-mail'; }" onfocus="if(this.value =='E-mail') { this.value = ''; }">
-                                                        </li>
-                                                        <li>
-                                                            <i class="wmicon-technology4"></i>
-                                                            <input type="text" value="Phone" onblur="if(this.value == '') { this.value ='Phone'; }" onfocus="if(this.value =='Phone') { this.value = ''; }">
-                                                        </li>
-                                                        <li>
-                                                            <i class="wmicon-web2"></i>
-                                                            <textarea placeholder="Message"></textarea>
-                                                        </li>
-                                                        <li> <input type="submit" value="Send Message"> </li>
-                                                    </ul>
-                                                </form>
+                                                 <form @submit.prevent="SendMessage">
+                          <ul>
+                            <li>
+                              <i class="wmicon-black"></i>
+                              <input
+                                type="text"
+                                value="Name"
+                               placeholder="Name"
+                               required
+                               v-model="name"
+                              />
+                            </li>
+                            <li>
+                              <i class="wmicon-symbol3"></i>
+                              <input
+                                type="text"
+                                value="E-mail"
+                                placeholder="E-mail"
+                                required
+                                v-model="email"
+                              />
+                            </li>
+                            <li>
+                              <i class="wmicon-technology4"></i>
+                              <input
+                                type="text"
+                                value="Phone"
+                                placeholder="Phone"
+                                required
+                                v-model="phone"
+                              
+                              />
+                            </li>
+                            <li>
+                              <i class="wmicon-web2"></i>
+                              <textarea placeholder="Message" v-model="message"></textarea>
+                            </li>
+                            <li>
+                              <input type="submit" value="Send Message" />
+                            </li>
+                          </ul>
+                        </form>
                                             </div>
                                         </div>
                                     </div>
@@ -393,9 +328,11 @@
 </template>
 
 <script>
-export default {
+import axios from 'axios';
 
-  layout:"MainLayout",
+export default {
+  middleware: ["check-auth"],
+    layout:"MainLayout",
 
  data(){
 
@@ -403,14 +340,85 @@ export default {
 
      contact:true,
      loading:false,
+      name:"",
+      email:"",
+      phone:"",
+      message:"",
+      courses:[],
+      instructors:[],
+
    }
  }
  ,
  methods:{
 
+    getInstractor(id){
+        return this.instructors.find(instructor => instructor.id == id);
+    },
+     getInstractors(){
+            this.loading = true;
+            const url = process.env.Url+'/auser-api/instructor/'
+            
+            axios.get(url).then(response=>{
+                this.instructors = response.data;
+                console.log(this.instructors)
+                this.loading = false
+            }).catch(error=>{
+                console.log(error)
+                this.loading = false
+            })
+        },
+
+    getCourses(){
+            
+            this.loading = true;
+            const url = process.env.baseUrl+'/course/'
+            
+            axios.get(url).then(response=>{
+                this.courses = response.data;
+                this.filterd_courses = response.data;
+                console.log(this.courses)
+                this.loading = false
+            }).catch(error=>{
+                console.log(error)
+                this.loading = false
+            })
+        },
+
+ SendMessage(){
+      this.loading = true;
+      const url = process.env.Url + '/auser-api/contact-us/'
+      axios.post(url,{
+        name:this.name,
+        email:this.email,
+        phone:this.phone,
+        message:this.message,
+      }).then(response => {
+        this.loading = false;
+        alert('Message Sent Successfully');
+  }).catch(error => {
+    this.loading = false;
+    alert('Error Sending Message');
+  })
+    
+},
    ChangeInfoTab(){
        this.contact = !this.contact
    }
+ },
+computed:{
+    popular(){
+        if (this.courses.length > 0){
+            return this.courses.slice(0,3)
+        }else{
+            this.courses
+        }
+    }
+},
+ mounted(){
+
+     this.getCourses();
+     this.getInstractors();
  }
 
 

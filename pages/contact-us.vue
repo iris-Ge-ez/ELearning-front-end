@@ -26,20 +26,20 @@
                 <div class="tab-pane active" id="home">
                   <div class="row">
                     <div class="col-md-4">
-                      <div class="wm-map"><div id="map"></div></div>
                     </div>
                     <div class="col-md-8">
                       <div class="wm-contact-form">
                         <span>Talk To Us Today</span>
-                        <form>
+                        <form @submit.prevent="SendMessage">
                           <ul>
                             <li>
                               <i class="wmicon-black"></i>
                               <input
                                 type="text"
                                 value="Name"
-                                onblur="if(this.value == '') { this.value ='Name'; }"
-                                onfocus="if(this.value =='Name') { this.value = ''; }"
+                               placeholder="Name"
+                               required
+                               v-model="name"
                               />
                             </li>
                             <li>
@@ -47,8 +47,9 @@
                               <input
                                 type="text"
                                 value="E-mail"
-                                onblur="if(this.value == '') { this.value ='E-mail'; }"
-                                onfocus="if(this.value =='E-mail') { this.value = ''; }"
+                                placeholder="E-mail"
+                                required
+                                v-model="email"
                               />
                             </li>
                             <li>
@@ -56,13 +57,15 @@
                               <input
                                 type="text"
                                 value="Phone"
-                                onblur="if(this.value == '') { this.value ='Phone'; }"
-                                onfocus="if(this.value =='Phone') { this.value = ''; }"
+                                placeholder="Phone"
+                                required
+                                v-model="phone"
+                              
                               />
                             </li>
                             <li>
                               <i class="wmicon-web2"></i>
-                              <textarea placeholder="Message"></textarea>
+                              <textarea placeholder="Message" v-model="message"></textarea>
                             </li>
                             <li>
                               <input type="submit" value="Send Message" />
@@ -143,9 +146,44 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
   layout: "MainLayout",
-};
+
+  data(){
+
+    return{
+
+      loading:true,
+      name:"",
+      email:"",
+      phone:"",
+      message:"",
+    }
+  },
+
+
+  methods:{
+
+    SendMessage(){
+      this.loading = true;
+      const url = process.env.Url + '/auser-api/contact-us/'
+      axios.post(url,{
+        name:this.name,
+        email:this.email,
+        phone:this.phone,
+        message:this.message,
+      }).then(response => {
+        this.loading = false;
+        alert('Message Sent Successfully');
+  }).catch(error => {
+    this.loading = false;
+    alert('Error Sending Message');
+  })
+    
+}}}
 </script>
 
 <style></style>

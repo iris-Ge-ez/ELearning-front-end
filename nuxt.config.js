@@ -60,7 +60,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/date-filter.js'
+    '~/plugins/date-filter.js',
+    // {src:'~plugins/vue-sweetalert2.js',mode:'client'},
+    // {src:'~plugins/Notifications.js',mode:'client'},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -79,13 +81,13 @@ export default {
   },
 
   env: {
-    // baseUrl: process.env.BASE_URL || 'http://localhost:8000/core-api',
-    // Url: process.env.BASE_URL || 'http://localhost:8000',
-    // Chat:process.env.BASE_URL || 'http://localhost:8000/chat/'
+    baseUrl: process.env.BASE_URL || 'http://localhost:8000/core-api',
+    Url: process.env.BASE_URL || 'http://localhost:8000',
+    Chat:process.env.BASE_URL || 'http://localhost:8000/chat/'
     
-    baseUrl: process.env.BASE_URL || 'http://192.168.0.3:8000/core-api',
-    Url: process.env.BASE_URL || 'http://192.168.0.3:8000',
-    Chat:process.env.BASE_URL || 'http://192.168.0.3:8000/chat/'
+    // baseUrl: process.env.BASE_URL || 'http://192.168.43.212:8000/core-api',
+    // Url: process.env.BASE_URL || 'http://192.168.43.212:8000',
+    // Chat:process.env.BASE_URL || 'http://192.168.43.212:8000/chat/'
     
   }
 }

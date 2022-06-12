@@ -67,7 +67,7 @@
                                         <nuxt-link to="/exam-sheets"><a href="#" data-toggle="modal" data-target="#ModalLogin">Exam Sheets</a></nuxt-link>
                                         
                                     </li>
-                           <li class="active" v-if="this.$store.getters.isAuthenticated">
+                           <li class="active" v-if="this.$store.getters.isAuthenticated && !this.$store.state.is_instractor">
                                <nuxt-link to="/chatrooms"><a href="#" data-toggle="modal" data-target="#ModalLogin">Chatrooms</a></nuxt-link>
                            
                            <ul class="wm-dropdown-menu">
@@ -78,7 +78,7 @@
                            </li>
 
                                    
-                                   <li v-if="this.$store.getters.isAuthenticated" ><a href="#">Dashboard</a>
+                                   <li v-if="this.$store.getters.isAuthenticated && !this.$store.is_instractor" ><a href="#">Dashboard</a>
                                         <ul class="wm-dropdown-menu">
                                        
                                             <li><nuxt-link to="/my-courses"><a href="#" data-toggle="modal" data-target="#ModalLogin">My Courses</a></nuxt-link></li>

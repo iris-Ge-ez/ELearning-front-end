@@ -120,7 +120,8 @@
                                 <h2>All Weeks of The Course</h2>
                             </div>
                             <div class="wm-courses wm-courses-popular">
-                                <ul class="row">
+                              <ul v-if="!enroled" > You are Not Allowed to see it is Not Activated For You!</ul>
+                                <ul v-else class="row">
                                  <nuxt-link v-for="week in thisCourseWeeks" :key="week.id"  :to="enrolled ? `/course/${course_id}/${week.id}` : ''"> 
                                     <li  class="col-md-4">
                                         <div class="wm-courses-popular-wrap">
@@ -218,9 +219,11 @@ export default {
       weeks: [],
       course_id: this.$route.params.id,
       enrolment: [],
+      enroled:null
     };
   },
   methods: {
+   
     EnrollCourse() {
       const url = process.env.baseUrl + "/enroll/";
 
@@ -236,13 +239,7 @@ export default {
           this.enrolment = [];
           this.getEnrolment();
 
-          this.$swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Your work has been Enrolled to the course",
-            showConfirmButton: true,
-            timer: 1500,
-          });
+          
         })
         .catch((error) => {
           console.log(error);
@@ -260,6 +257,7 @@ export default {
               enrolment.student == this.$store.state.user_id &&
               enrolment.course == this.course_id
           );
+          this.enroled = this.enrolment[0].is_active
         })
         .catch((error) => {
           console.log(error);
@@ -301,6 +299,11 @@ export default {
   },
 
   computed: {
+
+    enrol(){
+
+      return this.enrolment[0]
+    },
     thisCourseWeeks() {
       return this.weeks.filter((week) => week.course == this.$route.params.id);
     },

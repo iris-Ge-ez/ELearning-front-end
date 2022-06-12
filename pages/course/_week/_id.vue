@@ -617,7 +617,7 @@ getCookie(name) {
 			this.respo.push(req)
 
 
-			fetch('http://192.168.0.12:8000/chat-bot/', {
+			fetch(`${process.env.Url}/chat-bot/`, {
             method: 'POST',
             body: JSON.stringify({ message: this.message }),
             mode: 'cors',

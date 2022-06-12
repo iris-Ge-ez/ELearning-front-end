@@ -22,7 +22,7 @@ const createStore = () => {
             setToken(state, token) {
                 state.token = token;
               },
-            setRoleken(state, role) {
+            setRole(state, role) {
                 state.is_instractor = role;
               },
               pushError(state, error) {
